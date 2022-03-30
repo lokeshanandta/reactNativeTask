@@ -1,0 +1,84 @@
+import React from 'react';
+import { Text, View,Image,StyleSheet,TouchableOpacity,TextInput} from 'react-native';
+export default class app extends React.Component{
+  constructor(props){
+super(props)
+this.state={name:"",
+            password:"",
+            array:[]}}
+  handlelogin=()=>{
+    for (let i=0;i<this.state.name.length;i++){
+    if (this.state.name[i]==="@"){
+      console.log("llokehgiuseiu")
+   if (this.state.password.length>8)
+    {
+      array.push({name:this.state.name,password:this.state.password})
+      this.setState({})
+    }
+    }
+
+    else {
+      alert("@ is missing")
+    }
+  }}
+
+
+  render(){
+    return(<View style={{flex:1,backgroundColor:"#3b579d",justifyContent:"space-around"}}>
+<View style={{height:30,width:30}}> 
+    <Image style={{height:"100%",width:"100%",marginLeft:150}}source={{uri:"https://cdn-icons-png.flaticon.com/512/1051/1051309.png"}}></Image>
+    </View>
+    <View>
+    <TouchableOpacity> 
+    <View style={styles.textinputcointa}>
+                 <TextInput 
+style={{height:40,
+backgroundColor:"white",
+width:250}}
+placeholder="Email or phone"
+
+onChangeText={(item)=>this.setState({name:(item)})} />
+
+                 </View>
+    </TouchableOpacity>
+    <View style={styles.container}></View>
+    </View>
+
+    <View>
+    <TouchableOpacity> 
+    <View style={styles.textinputcointa}>
+                 <TextInput 
+style={{height:40,
+backgroundColor:"white",
+width:250}}
+placeholder="password"
+
+onChangeText={(item)=>this.setState({password:(item)})} />
+
+                 </View>
+    </TouchableOpacity>
+    <View style={styles.container}></View>
+    </View>
+    <TouchableOpacity onPress={()=>this.handlelogin()}>
+    <View style={{height:30,width:200,backgroundColor:"#8585e0",marginLeft:70}}>
+    <Text style={{marginLeft:80,marginTop:4,color:"white"}}>Log In</Text>
+    </View>
+    </TouchableOpacity>
+    </View>)
+  }
+} 
+
+
+const styles=StyleSheet.create({
+container:{height:0.60,
+           width:250,
+           backgroundColor:"white",
+           marginLeft:40,},
+ textinputcointa:{heigth:90,
+                  width:250,
+                 backgroundColor:"white",
+                 marginLeft:40,
+                 borderRadius:10
+                 }          
+
+})
