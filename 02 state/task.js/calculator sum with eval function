@@ -1,0 +1,92 @@
+  import React from 'react';
+import { Text, View,Button } from 'react-native';
+
+export default class app extends React.Component{
+constructor(props){
+  super(props)
+this.state={number:[{id:0,name:"1",isnumber:true},{id:1,name:"2",isnumber:true},{id:2,name:"3",isnumber:true},{id:3,name:"4",isnumber:true},{id:4,name:"5",isnumber:true},{id:5,name:"6",isnumber:true},{id:6,name:"7",isnumber:true},{id:7,name:"8",isnumber:true},{id:8,name:"9",isnumber:true},{id:9,name:"0",isnumber:true},{id:10,name:"+",isnumber:false},{id:11,name:"-",isnumber:false},{id:12,name:"%",isnumber:false},{id:13,name:"*",isnumber:false}],object:"",add:"",string:"",isequalpresed:false,displayed:""}
+
+}
+handlebutton=(i)=>{
+  // console.log("item",i)
+   this.state.object=this.state.object+i
+ this.setState({object:this.state.object})
+if (this.state.isequalpresed===true)
+{
+  for (let i=0;i<this.state.number.length;i++)
+  
+  
+{
+if (this.state.number[i].isnumber===true)
+
+{this.state.displayed=this.state.object+i
+this.setState({displayed:this.state.displayed})
+
+ this.state.object=""
+ this.setState({object:this.state.object})
+}
+this.state.isequalpresed=false
+this.setState({isequalpresed:this.state.isequalpresed})
+}
+}
+  }
+  handleequalto=(variable)=>{
+    this.state.add=eval(variable)
+    this.setState({add:this.state.add})
+    this.state.array=this.state.add
+this.setState({add:this.state.object})
+    this.state.object=this.state.array
+  
+    this.state.isequalpresed=true
+    this.setState({isequalpresed:this.state.isequalpresed})
+    // console.log(this.state.isnumber,"lokesh")
+  }
+  handledeleted=()=>{
+    this.state.object=this.state.object.slice(0,-1)
+    this.setState({object:this.state.object})
+    // console.log(this.state.isnumber,"jack")
+    
+  }
+render(){
+  // console.log(this.state)
+return(<View style={{flex:3}}>
+
+<View style={{flex:0.10,borderColor:"black",borderWidth:2,backgroundColor:"white"}}>
+
+<Text>{this.state.add}</Text>
+
+<View style={{alignItems:"flex-end"}}>
+
+<View style={{height:40,width:80,borderWidth:2,borderColor:"red"}}>
+
+<Text>{this.state.object}</Text></View>
+
+</View>
+<View  style={{flexDirection:"row",flexWrap:"wrap"}}>
+{this.state.number.map((e)=>{return(
+  <View style={{height:60,width:107,padding:20}}>
+  <Button
+  onPress={()=>this.handlebutton(e.name)}
+  title={e.name}
+  color="blue"
+  />
+  
+  </View>)})}
+  <View style={{height:80,width:90,padding:20}}>
+  <Button
+  onPress={()=>this.handleequalto(this.state.object)}
+  title="="
+  color="blue"
+  />
+   <Button
+  onPress={this.handledeleted}
+  title="delete"
+  color="blue"
+  />
+  </View>
+  </View>
+</View>
+</View>)
+
+}
+}
