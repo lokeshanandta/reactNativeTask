@@ -1,0 +1,141 @@
+import React from 'react';
+import{Text,View,Image,TouchableOpacity} from 'react-native'
+
+export default class app extends React.Component
+{
+  constructor(props){
+    super(props)
+    this.state={button:[{id:"0",name:"7",isnumber:"true"},
+    {id:"1",name:"8",isnumber:"true"},
+    {id:"2",name:"9",isnumber:"true"},
+    {id:"3",name:"*",isnumber:"false"},
+    {id:"4",name:"4",isnumber:"true"},
+    {id:"5",name:"5",isnumber:"true"},
+    {id:"6",name:"6",isnumber:"true"},
+    {id:"7",name:"-",isnumber:"false"},
+    {id:"8",name:"1",isnumber:"true"},
+    {id:"9",name:"2",isnumber:"true"},
+    {id:"10",name:"3",isnumber:"true"},
+    {id:"11",name:"+",isnumber:"false"},
+    {id:"12",name:"/",isnumber:"true"},
+    {id:"13",name:"0",isnumber:"true"},
+    {id:"14",name:".",isnumber:"true"},
+    {id:"15",name:"=",isnumber:"false"}],
+    add:"",
+    indexarray:[],
+    operator:["+","-","%","*","/"],
+    }
+  }
+  handlebuttonclicked=(item)=>{
+    // console.log("item-->",item)
+    if(item.name!=="="){
+      this.state.add=this.state.add+item.name
+      this .rest=this.state.add
+      console.log(this.state.add,"add")
+      console.log(this.rest,"rest")
+      }else{
+        // console.log("one")
+        let indexArray=[]
+        for(let i=0;i<this.state.add.length;i++){
+          for(let j=0;j<this.state.operator.length;j++){
+              if(this.state.add[i]===this.state.operator[j]){
+                indexArray.push({id:indexArray.length+1,operator:this.state.add[i],indexFound:i})
+              }
+          }
+        }
+        // console.log("two","indexArray-->",indexArray)
+        let startingIndex=0;
+        let foundNumber=[]
+        for(let k=0;k<indexArray.length+1;k++){
+          // console.log("startingIndex-->",startingIndex,k===indexArray.length?null:indexArray[k].indexFound)
+            let temp=k===indexArray.length?this.state.add.substring(startingIndex):this.state.add.substring(startingIndex,indexArray[k].indexFound)
+            console.log(k,"temp-->",temp)
+            foundNumber.push(temp)
+            startingIndex=k===indexArray.length?null:indexArray[k].indexFound+1
+        }
+        let result;
+        for(let l=0; l<indexArray.length;l++){
+          
+          if(indexArray[l].operator==='+'){
+            // console.log("one--1")
+            result=l===0?parseInt(foundNumber[l])+parseInt(foundNumber[l+1]):result+foundNumber[l+1]
+          }
+          if(indexArray[l].operator==='-'){
+            // console.log("two--2")
+            result=l===0?parseInt(foundNumber[l])-parseInt(foundNumber[l+1]):result-foundNumber[l+1]
+          }
+         
+          if(indexArray[l].operator==='*'){
+            // console.log("three--3")
+            result=l===0?parseInt(foundNumber[l])*parseInt(foundNumber[l+1]):result*foundNumber[l+1]
+          }
+           if(indexArray[l].operator==='/'){
+            // console.log("three--3")
+            result=l===0?parseInt(foundNumber[l])/parseInt(foundNumber[l+1]):result/foundNumber[l+1]
+          } 
+        }
+this.total=result
+        // console.log("indexArray-->",indexArray,"foundNumber-->",foundNumber,"result-->",result)
+      }
+   
+    this.setState({})
+   
+      }
+handledeleted=()=>{
+this.state.add=""
+this.setState({})
+this.total=""
+}
+handleclear=()=>{
+  this.state.add=this.state.add.substring(0,this.state.add.length-1)
+this.setState({})
+}
+handlerestore=()=>{
+  console.log(this.rest,"fusildfhhlhg")
+this.state.add=this.rest
+console.log(this.state.add,"higuifyuuygfiou")
+this.setState({add:this.state.add})
+}
+  render(){
+    console.log("this.state.add-->",this.state.add)
+    return(<View style={{flex:1,backgroundColor:"#0d0d0d"}}>
+    <View style={{flexDirection:"row",}}>
+    <View><Text style={{color:"white",width:84,marginLeft:20}}>Calculator</Text></View>
+    <View><Text style={{color:"white",width:110}}>Exchange Rate</Text></View>
+    <View><Text style={{color:"white"}}>Unit conventer</Text></View>
+    </View>
+    
+    <View style={{height:80,width:"100%",backgroundColor:"#0d0d0d"}}><Text style={{color:"white",fontSize:20}}>{this.state.add}</Text>
+    </View>
+    <View style={{height:40,width:350}}><Text style={{color:"white"}}>{this.total}</Text></View>
+    <View style={{height:30,width:"100%",backgroundColor:"#0d0d0d",flexDirection:"row",alignItems:"center",}}>
+    <View style={{height:10,width:20,marginLeft:20}}>
+    <Image style={{height:17,width:20}}source={{uri:"https://cdn-icons.flaticon.com/png/512/3114/premium/3114865.png?token=exp=1648030773~hmac=6a55afc8a1380ef49fff1d093585f436"}}/>
+    </View>
+    <View style={{height:10,width:20,marginLeft:20}}>
+    <Image style={{height:14,width:14}} source={{uri:"https://cdn-icons.flaticon.com/png/512/3964/premium/3964478.png?token=exp=1648030841~hmac=535335c8c88d57856fa88e2f5482a44e"}}/>
+    </View>
+    </View>
+    <View style={{flexDirection:"row",flexWrap:"wrap"}}>
+    {this.state.button.map((item)=>{return(<View>
+    <TouchableOpacity onPress={()=>this.handlebuttonclicked(item)}>
+<View style={{height:60,width:79,backgroundColor:"#4d4d4d",justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"white",fontSize:28}}>{item.name}</Text>
+</View>
+    </TouchableOpacity>
+    </View>)})}</View>
+    <View style={{flexDirection:"row"}}>
+    <TouchableOpacity onPress={()=>this.handleclear()}>
+    <View style={{height:50,width:60,backgroundColor:"#4d4d4d",alignItems:"center",justifyContent:"center"}}>
+    <Text style={{color:"white"}}>C</Text> </View></TouchableOpacity>
+    <TouchableOpacity onPress={()=>this.handlerestore()}>
+<View style={{height:50,width:100,backgroundColor:"skyblue",alignItems:"center",margin:2,justifyContent:"center"}}>
+<Text style={{ color:"white"}}>RESTORE</Text>
+</View></TouchableOpacity>
+
+<TouchableOpacity onPress={()=>this.handledeleted()}>
+     <View style={{height:50,width:100,backgroundColor:"red",alignItems:"center",margin:2,justifyContent:"center"}}>
+    <Text style={{color:"white"}}>DELETE</Text></View></TouchableOpacity>
+    </View>
+    </View>)
+  }}
