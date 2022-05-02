@@ -1,0 +1,59 @@
+import React from 'react'
+import {Text,View,Button} from 'react-native'
+
+export default class app extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={date:"",boolean:true}
+  }
+  componentDidMount(){
+    // console.log("component did mount")
+}
+
+
+  shouldComponentUpdate(){
+    console.log("should component update",this.state.boolean)
+return this.state.boolean
+  }
+handlestop=()=>{
+  this.state.boolean=false
+    this.setState({boolean:false})
+    console.log(this.state.boolean,"stop function")
+}
+  handlebutton=(item)=>{
+    
+  if (item==="start")
+  {
+    this.state.boolean=true
+  }
+  this.state.date=new Date().toLocaleTimeString()
+    console.log("",this.state.date)
+this.setState({})
+  }
+
+  // handlebutton1=()=>{}
+  componentDidUpdate(){
+console.log("component did update")
+setTimeout(this.handlebutton,1000)
+  }
+  componentWillUnmount(){
+console.log("component will unmount")
+  }
+  render(){console.log("render called")
+    return(<View>
+  <View style={{height:100,width:300,borderColor:"red",borderWidth:2}}>
+  {this.state.date}
+  </View>
+
+  <View style={{margin:10}}>
+  <Button
+  onPress={()=>this.handlebutton("start")}
+  title="start"
+/></View>
+<View>
+  <Button 
+  onPress={()=>this.handlestop("stop")}
+  title="stop"/>
+  </View>
+  </View>)}
+}

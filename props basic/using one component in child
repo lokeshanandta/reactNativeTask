@@ -1,0 +1,57 @@
+import React from 'react';
+import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import CustomButton from './customButton';
+
+export default class app extends React.Component {
+  constructor(props) {
+    super(props);
+    this.arr = [
+      { id: 1, name: 1 },
+      { id: 2, name: 2 },
+      { id: 3, name: 3 },
+      { id: 4, name: 4 },
+    ];
+  }
+  handleClick=(val)=>{
+console.log("val-->",val)
+  }
+  render() {
+    return (
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'yellow',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+        }}>
+        <CustomButton
+          height={25}
+          width={100}
+          backgroundcolor="blue"
+          name="button1"
+          color="white"
+        />
+        {this.arr.map((el)=>{return(
+        <CustomButton
+          height={20}
+          item={el}
+          width={20}
+          backgroundcolor="gray"
+          name={el.name}
+          color="green"
+          handleClick={this.handleClick}
+        />  
+        )})
+
+        }
+        <CustomButton
+          height={15}
+          width={75}
+          backgroundcolor="red"
+          name="button2"
+          color="green"
+        />
+      </View>
+    );
+  }
+}
