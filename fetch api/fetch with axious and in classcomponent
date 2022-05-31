@@ -1,0 +1,99 @@
+import axios from 'axios'
+import React from 'react'
+import {Text,View,Image,TouchableOpacity,TextInput} from 'react-native'
+
+export default class App extends React.Component{
+constructor(props){
+  super(props)
+  this.state={maildata:"",passworddata:'',responceData:""}
+}
+
+
+  
+    
+  
+
+
+componentDidUpdate(){
+  // normal fetch method
+  // fetch('https://reqres.in/api/register',
+  // {method:'POST',
+  // body: JSON.stringify({
+  //     email:this.state.mailData,
+  //     password: this.state.passworddata
+  // }),
+  // headers:{'Content-Type': 'application/json'}
+  // })
+  // .then((responce)=>responce.json())
+  // .then((data)=>console.log("sucess",data))
+  // .catch((error)=>console.log("error"))
+ 
+// using get method in the axios
+// axios.get('https://reqres.in/api/register')
+// .then((responce)=>console.log(responce.data))
+// .catch((error)=>console.log(error))
+
+// axios post metheod
+// axios.post('https://reqres.in/api/register',{email:this.state.maildata,password:this.state.passworddata})
+
+//   .then((responce)=>console.log("sucess",responce.data))
+//   .catch((error)=>console.log("error",error))
+}
+
+ 
+updatestate=()=>{
+  
+  // fetch('https://reqres.in/api/register',
+  // {method:'POST',
+  // body: JSON.stringify({
+  //     email:this.state.maildata,
+  //     password: this.state.passworddata
+  // }),
+  // headers:{'Content-Type': 'application/json'}
+  // })
+  // .then((responce)=>responce.json())
+  // .then((data)=>console.log("sucess",data))
+  // .catch((error)=>console.log("error"))
+
+
+axios.post('https://reqres.in/api/register',{email:this.state.maildata,password:this.state.passworddata})
+
+  .then((responce)=>console.log("sucess",responce.data))
+  .catch((error)=>console.log("error",error))
+  
+ 
+}
+render(){
+   return(<View style={{flex:1,backgroundColor:"#365b85",justifyContent:"center",alignItems:"center"}}>
+   <View style={{height:40,width:40,backgroundColor:"white",marginTop:70}}>
+   <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/2111/2111393.png'}}
+   style={{height:40,width:40}}
+   />
+   </View>
+   <View >
+   <View style={{height:40,width:200,borderBottomWidth:2,backgroundColor:"#365b85",borderBottomColor:"white",marginTop:40}}>
+   <TextInput
+  onChangeText={(i)=>{this.setState({maildata:i})}}
+   style={{height:'100%'}}
+   placeholder={"Email or Phone"}
+   placeholderTextColor="white"
+   />
+   </View>
+ 
+    <View style={{height:40,borderBottomWidth:2,backgroundColor:"#365b85",borderBottomColor:"white"}}>
+   <TextInput
+  onChangeText={(i)=>{this.setState({passworddata:i})}}
+   style={{height:'100%'}}
+   placeholder={"Password"}
+   
+   placeholderTextColor="white"
+   />
+   </View>
+ <TouchableOpacity onPress={()=>this.updatestate()}>
+   <View style={{height:30,backgroundColor:"#84acd9",marginTop:40,justifyContent:"center",alignItems:"center"}}>
+  <Text>LOG IN</Text>
+   </View>
+   </TouchableOpacity>
+   </View>
+   </View>)
+}}
