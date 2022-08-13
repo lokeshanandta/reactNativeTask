@@ -1,0 +1,106 @@
+import React,{useState} from 'react'
+import {Text,View,TouchableOpacity} from 'react-native'
+
+export default 
+function Timmer(){
+  const [seconds,setseconds]=useState(0)
+  const [minutes,setminutes]=useState(0)
+  const [hour,sethour]=useState(0)
+  const [boolean,setboolean]=useState()
+  const [boolean1,setboolean1]=useState(true)
+  const [intervel,setIntervel]=useState()
+  const [restart,setrestart]=useState(stop)
+function Start(){
+let min=minutes
+let sec=seconds
+let hou=hour 
+setIntervel(setInterval(Stop,1000))
+
+
+function Stop (){
+  
+sec++
+setseconds(sec)
+if (sec===60){
+sec=0
+min++
+setminutes(min)
+if (min===60){
+  hou++
+  sethour(hou)
+  min=0
+}}
+setboolean1(false)
+setboolean(true)
+}}
+function Reset(){
+  setIntervel(clearInterval)
+ setseconds(0)
+setboolean1(true)
+}
+ function Stopped(){
+ setIntervel(clearInterval)
+ setboolean(false)
+ 
+}
+function Resume(){
+  Start()
+}
+
+  return(<View style={{flex:1,backgroundColor:"black"}}>
+  <View style={{height:30,width:310,margin:10,flexDirection:"row"}}>
+  <View style={{height:"100%",width:70,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:17}}>Alarm</Text>
+  </View>
+
+  <View style={{height:"100%",width:80,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:17}}>Clock</Text></View>
+
+  <View style={{height:"100%",width:80,justifyContent:"center",alignItems:"center",borderBottomColor:"red",borderBottomWidth:2}}>
+  <Text style={{color:"white",fontSize:17}}>Stopwatch</Text></View>
+
+  <View style={{height:"100%",width:80,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:17}}>Timmer</Text></View>
+  </View>
+
+<View style={{height:240,width:240,backgroundColor:"red",marginTop:20,marginLeft:47,borderRadius:180,justifyContent:"center",alignItems:"center"}}>
+<View style={{height:230,width:230,backgroundColor:"black",borderRadius:180,justifyContent:"center",flexDirection:"row",alignItems:"center"}}>
+<View style={{height:40,width:40,backgroundColor:"black",marginRight:10,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"white",fontSize:24}}>{hour}</Text>
+</View>
+<View style={{height:40,width:40,backgroundColor:"black",marginRight:10,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"white",fontSize:24}}>{minutes}</Text>
+</View>
+<View style={{height:40,width:40,backgroundColor:"black",marginRight:10,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"white",fontSize:24}}>{seconds}</Text>
+</View>
+</View>
+</View>
+
+<View style={{height:30,width:200,backgroundColor:"black",marginTop:100,flexDirection:"row",}}>
+{boolean1===true?
+<TouchableOpacity onPress={Start}>
+<View style={{heigth:30,width:100,backgroundColor:"red",justifyContent:"center",alignItems:"center",borderRadius:20,marginLeft:110}}>
+<Text style={{color:"white",fontSize:19}}>Start</Text>
+</View>
+</TouchableOpacity>:
+
+
+<View style={{height:30,width:200,flexDirection:"row",margin:10,marginLeft:40}}>
+<TouchableOpacity onPress={boolean===true?Stopped:Resume}>
+<View style={{heigth:30,width:100,backgroundColor:"red",justifyContent:"center",alignItems:"center",borderRadius:20}}>
+<Text style={{color:"white",fontSize:19}}>{boolean===true?"stop":"resume"}</Text>
+</View>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={Reset}>
+<View style={{heigth:30,width:100,backgroundColor:"red",justifyContent:"center",alignItems:"center",borderRadius:20,marginLeft:40}}>
+<Text style={{color:"white",fontSize:19}}>reset</Text>
+</View>
+</TouchableOpacity>
+
+</View>}
+</View>
+
+  </View>)
+}

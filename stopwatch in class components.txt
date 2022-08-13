@@ -1,0 +1,60 @@
+import React from 'react';
+import { Text, View,TouchableOpacity } from 'react-native';
+ export default class App extends React.Component{
+   constructor(props){
+     super(props)
+     this.state={seconds:0,minutes:0,hour:0}
+   }
+   start=()=>{
+     this.setState({seconds:this.state.seconds+1})
+     
+     this.boolean=true
+     if (this.boolean===true){
+       setInterval(this.start(),1000)
+     }
+     }
+
+
+
+
+   render(){return(<View style={{flex:1,backgroundColor:"black"}}>
+  <View style={{height:30,width:310,margin:10,flexDirection:"row"}}>
+  <View style={{height:"100%",width:70,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:17}}>Alarm</Text>
+  </View>
+
+  <View style={{height:"100%",width:80,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:17}}>Clock</Text></View>
+
+  <View style={{height:"100%",width:80,justifyContent:"center",alignItems:"center",borderBottomColor:"red",borderBottomWidth:2}}>
+  <Text style={{color:"white",fontSize:17}}>Stopwatch</Text></View>
+
+  <View style={{height:"100%",width:80,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:17}}>Timmer</Text></View>
+  </View>
+
+<View style={{height:240,width:240,backgroundColor:"red",marginTop:20,marginLeft:47,borderRadius:180,justifyContent:"center",alignItems:"center"}}>
+<View style={{height:230,width:230,backgroundColor:"black",borderRadius:180,justifyContent:"center",flexDirection:"row",alignItems:"center"}}>
+<View style={{height:40,width:40,backgroundColor:"black",marginRight:10,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"white",fontSize:24}}></Text>
+</View>
+<View style={{height:40,width:40,backgroundColor:"black",marginRight:10,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"white",fontSize:24}}></Text>
+</View>
+<View style={{height:40,width:40,backgroundColor:"black",marginRight:10,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"white",fontSize:24}}>{this.state.seconds}</Text>
+</View>
+</View>
+</View>
+
+<View style={{height:30,width:200,backgroundColor:"black",marginTop:100,marginLeft:120,flexDirection:"row",}}>
+
+<TouchableOpacity onPress={this.start}>
+<View style={{heigth:30,width:100,backgroundColor:"red",justifyContent:"center",alignItems:"center",borderRadius:20}}>
+<Text style={{color:"white",fontSize:19}}>Start</Text>
+</View>
+</TouchableOpacity>
+</View>
+
+  </View>)}
+ }
