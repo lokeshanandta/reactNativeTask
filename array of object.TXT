@@ -1,0 +1,51 @@
+let data = [{ id: 1, name: "lokesh", gender: "male", marks: [70, 60, 50, 40, 36] },
+{ id: 2, name: "akash", gender: "male", marks: [50, 40, 30, 62, 82] },
+{ id: 3, name: "gopi", gender: "male", marks: [80, 85, 96, 92, 89] },
+{ id: 4, name: "tharun", gender: "male", marks: [50, 70, 65, 59, 74] },
+{ id: 5, name: "vino", gender: "female", marks: [60, 30, 28, 45, 53] },
+{ id: 6, name: "ammu", gender: "female", marks: [70, 90, 40, 82, 34] }]
+let data_length = data.length
+let pass = []
+let fail = []
+for (let i = 0; i < data_length; i++) {
+  let marks_length = data[i].marks.length
+  let pass_mark = 0
+  let total = 0
+  let failmark = 0
+
+  let c = {}
+  let d = {}
+  for (let j = 0; j < marks_length; j++) {
+    let mark = data[i].marks[j]
+    if (mark > 35) {
+      total = total + mark
+      pass_mark = pass_mark + 1
+      let percentage = total / 5
+      if (pass_mark === marks_length) {
+        c.name = data[i].name
+        c.total = total
+        c.percentage = percentage
+        c.pass = pass_mark
+        pass.push(c)
+        console.log(c)
+      }
+    }
+    else if (mark < 35) {
+      failmark = failmark + 1
+      d.name = data[i].name
+      d.number_of_subject_fail = failmark
+      fail.push(d)
+      console.log("d-->", d)
+    }
+
+  }
+
+
+}
+  console.log("pass-->", pass);
+  console.log("fail-->",fail)
+
+
+
+
+

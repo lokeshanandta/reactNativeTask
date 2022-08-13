@@ -1,0 +1,6 @@
+let name="lokesh"
+let age=28
+let c={}
+c.name=name
+c.age=age
+console.log(c)
