@@ -1,0 +1,40 @@
+import React from 'react';
+import { Text, View } from 'react-native';
+export default class App extends React.Component{
+componentDidMount(){
+  let a=10
+  let b=a
+   b=12
+  // console.log("a-->",a)
+  // console.log("b-->",b)
+
+//  let  data={name:"alash",age:20,gender:"male"}
+//  let info=data
+//   info.name="lokesh"
+
+//   console.log("info-->",data.name,"info.name--->",info.name)
+
+// let  info1=JSON.parse(JSON.stringify(data))
+// info1.age=30
+//   console.log("infoOne--->",info1.age,"data.age", data.age)
+  let dataa ={name:"",age:"",gender:""}
+let data1=JSON.parse(JSON.stringify(dataa))
+ data1.name="akash",data1.age=20,data1.gender="male"
+ // dataa=data1 --->direct ta assign panna, value entha edathula mathunalum ellam edathulaiyum maaridum 
+ //json use panna antha particular edathula mattum nadakum
+let data2=JSON.parse(JSON.stringify(dataa))
+// let data2=dataa 
+data2.name="ismail"
+
+console.log("dataa.name",dataa.name,"data1.name",data1.name,"data2.name",data2.name)
+}
+
+
+render(){
+ return (
+   
+     <View></View>
+  );
+
+}
+}
