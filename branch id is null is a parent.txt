@@ -1,0 +1,65 @@
+let data =[{"success":true,"status":"Request processed Successfully","message":null,"details":[{"id":"ee65fd52-85cb-42c4-b333-c4e067e200c6","name":"Leora Pondy","parent_id":"a180f924-138e-4844-997e-458cd2fc99d0","has_location":false,"fencing_radius":30,"can_update_location":false,"geo_location_id":null,"fence_admin_id":null},{"id":"af6780eb-a338-493c-bcc7-7aa7d8182f83","name":"Leora Mambalam","parent_id":"ca6dfb2f-58ed-41b8-986b-6e13f22ba86a","has_location":false,"fencing_radius":30,"can_update_location":false,"geo_location_id":null,"fence_admin_id":null},{"id":"ca6dfb2f-58ed-41b8-986b-6e13f22ba86a","name":"Leora Tambaram","parent_id":"1c10081f-8837-4f1a-be8b-5a0fb98d8e6f","has_location":false,"fencing_radius":30,"can_update_location":true,"geo_location_id":null,"fence_admin_id":null},{"id":"ab2949cc-72cf-45e1-8510-f4fe99d20dcf","name":"Leora AnnaNagar","parent_id":"a180f924-138e-4844-997e-458cd2fc99d0","has_location":true,"fencing_radius":30,"can_update_location":true,"geo_location_id":"a61b0d51-f578-4cde-b99d-65df460c4567","fence_admin_id":"0cc003ba-b552-4080-a460-613cd58583a9"},{"id":"e0efdbfd-a187-4b62-ada8-f7e9711ed694","name":"Leora Adayar","parent_id":"a180f924-138e-4844-997e-458cd2fc99d0","has_location":true,"fencing_radius":500,"can_update_location":true,"geo_location_id":"659ec0e9-2ab3-4e73-9da5-ba4145e68ee3","fence_admin_id":null},{"id":"50f37b3c-e16d-46a5-a788-797bef53c7d6","name":"Leora Gummidipoondi ","parent_id":"17240e59-f624-422e-ac55-9b2295bfc7fa","has_location":false,"fencing_radius":30,"can_update_location":false,"geo_location_id":null,"fence_admin_id":null},{"id":"2111d74b-a072-4635-bd3c-b79431f72a35","name":"Leora ponneri","parent_id":"17240e59-f624-422e-ac55-9b2295bfc7fa","has_location":false,"fencing_radius":30,"can_update_location":false,"geo_location_id":null,"fence_admin_id":null},{"id":"1c10081f-8837-4f1a-be8b-5a0fb98d8e6f","name":"South chennai","parent_id":"724fa95d-0275-4ff2-95e7-21c6ec3f61b2","has_location":false,"fencing_radius":30,"can_update_location":false,"geo_location_id":null,"fence_admin_id":null},{"id":"a180f924-138e-4844-997e-458cd2fc99d0","name":"North chennai","parent_id":"724fa95d-0275-4ff2-95e7-21c6ec3f61b2","has_location":true,"fencing_radius":30,"can_update_location":true,"geo_location_id":"49963702-320b-4f74-8a6c-3c373ec93721","fence_admin_id":null},{"id":"17240e59-f624-422e-ac55-9b2295bfc7fa","name":"Leora Thiruvallur","parent_id":"2bd6fd3a-26b0-437e-b515-a27ee6ed237a","has_location":false,"fencing_radius":30,"can_update_location":false,"geo_location_id":null,"fence_admin_id":null},{"id":"724fa95d-0275-4ff2-95e7-21c6ec3f61b2","name":"Leora Chennai","parent_id":"2bd6fd3a-26b0-437e-b515-a27ee6ed237a","has_location":true,"fencing_radius":30,"can_update_location":true,"geo_location_id":"f4cb25ec-a4bc-4bc2-ae35-65fecbeb93a7","fence_admin_id":null},{"id":"2bd6fd3a-26b0-437e-b515-a27ee6ed237a","name":"Leora infotech GPD","parent_id":null,"has_location":true,"fencing_radius":222,"can_update_location":true,"geo_location_id":"cd086e82-ef66-4aea-8271-fbfb900cef3d","fence_admin_id":"eb9bde56-7e0a-4ffb-9c78-093bac2f4c76"}]}]
+let branchList= data[0].details
+
+
+const getChild = (parent_id)=> branchList.filter(it=>it.parent_id === parent_id).map(it2 => { it2.child = getChild(it2.id);
+    console.log(getChild,"kkkk")
+    return it2})    
+let parentBranch = branchList.find(it=>!it.parent_id)
+// console.log(parentBranch)
+let hierarchicalBranchArray = {...parentBranch, child : getChild(parentBranch.id)}
+// console.log(getChild(parentBranch))
+
+// console.log(hierarchicalBranchArray)
+
+
+const getCurrentBranchNode = (id, arr) => {
+
+let selectedNode = undefined
+const getCurrentBranchNodeRecursive = (id, arr) =>
+arr.forEach(it=> {
+    if(it.id === id)
+    {
+        selectedNode = it
+    }
+    else
+    {
+        getCurrentBranchNodeRecursive(id, it.child) 
+    }
+})   
+
+getCurrentBranchNodeRecursive(id, arr)
+return selectedNode
+}
+
+const SelectedId = '17240e59-f624-422e-ac55-9b2295bfc7fa'
+const currentNode = getCurrentBranchNode(SelectedId, [hierarchicalBranchArray])
+// console.log(currentNode)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log(convertedArray)
+
+//  for(i=0 ;i<convertedArray.length ;i++){  
+//    if (convertedArray[i].parent_id === null){
+//     let rootParent = convertedArray[i]
+//     console.log(rootParent)
+//     if(rootParent.id === convertedArray[i].parent_id){
+        
+//     }
+//  }
+//  else{
+//     // console.log("hello")  
+//  }
+// }
