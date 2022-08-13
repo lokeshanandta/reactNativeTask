@@ -1,0 +1,26 @@
+class HelloWorld {
+    public static void main(String[] args) {
+    boolean itly = true;
+    boolean sambar = false;
+    boolean poori = true;
+    boolean kalangu = false;
+    boolean thosa = true;
+    boolean chathini = true;
+    if (itly && sambar)
+    {
+     System.out.println("avaiable");   
+    }
+    else if (poori && kalangu)
+    {
+      System.out.println("avaiable");
+    }
+    else if (thosa && (chathini || kalangu))
+    {
+        System.out.println("thosa,chathini&kalangu avaiable");
+    }
+    else
+    {
+        System.out.println("not order");
+    }
+    }
+}

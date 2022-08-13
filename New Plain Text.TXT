@@ -1,0 +1,33 @@
+let school=[{name:"lokesh",
+gender:"male",
+age:"28",
+subject:[70,80,90,100,60]},
+{name:"ajith",
+gender:"male",
+age:"20",
+subject:[45,50,60,70,35,]},
+{name:"srini",
+gender:"male",
+age:"30",
+subject:[60,50,70,80,30,]},
+{name:"vishnu",
+gender:"male",
+age:"32",
+subject:[70,80,25,40,50,]}]
+let b = school.length
+for (let i=0;i<b;i++)
+{let total=0
+let c=(school[i].subject).length
+let d= school[i].subject
+
+ for (let k=0;k<c;k++)
+ {
+total=total+d[k]}
+console.log(total)
+console.log(school[i].name)
+let percentage=total/500*100
+console.log(percentage)
+ }
+ if (35>100)
+ 
+ 

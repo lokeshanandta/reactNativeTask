@@ -1,0 +1,16 @@
+String greeting = "WELCOME TO THE JURASSIC PARK";
+        System.out.println(greeting);
+        int age = 17;
+        
+         if(age <18)
+        {
+            System.out.println("YOU ARE ELIGIBLE FOR RIDE 1 AND RIDE 3");
+        }
+        else if((age<=60) && (age>=18))
+        {
+            System.out.println("YOU ARE ELIGIBLE FOR RIDE1 & 2 & 3");
+        }
+        else
+        {
+            System.out.println("YOU ARE ELIGIBLE FOR RIDE 1 AND RIDE 2");
+        }

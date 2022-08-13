@@ -1,0 +1,172 @@
+let data = [
+    {
+      name: "Person1",
+      gender: "male",
+      result: [
+        { subject: "Tamil", marks: "58" },
+        { subject: "English", marks: "65" },
+        { subject: "Maths", marks: "34" },
+        { subject: "Physics", marks: "53" },
+        { subject: "Chemistry", marks: "93" },
+        { subject: "Biology", marks: "27" },
+      ],
+    },
+    {
+      name: "Person2",
+      gender: "female",
+      result: [
+        { subject: "Tamil", marks: "86" },
+        { subject: "English", marks: "96" },
+        { subject: "Maths", marks: "74" },
+        { subject: "Physics", marks: "95" },
+        { subject: "Chemistry", marks: "73" },
+        { subject: "Computer", marks: "90" },
+      ],
+    },
+    {
+      name: "Person3",
+      gender: "female",
+      result: [
+        { subject: "Tamil", marks: "68" },
+        { subject: "English", marks: "36" },
+        { subject: "Maths", marks: "46" },
+        { subject: "Physics", marks: "75" },
+        { subject: "Chemistry", marks: "63" },
+        { subject: "Biology", marks: "47" },
+      ],
+    },
+    {
+      name: "Person4",
+      gender: "male",
+      result: [
+        { subject: "Tamil", marks: "68" },
+        { subject: "English", marks: "69" },
+        { subject: "Maths", marks: "37" },
+        { subject: "Physics", marks: "57" },
+        { subject: "Chemistry", marks: "53" },
+        { subject: "Computer", marks: "65" },
+      ],
+    },
+    {
+      name: "Person5",
+      gender: "female",
+      result: [
+        { subject: "Tamil", marks: "86" },
+        { subject: "English", marks: "66" },
+        { subject: "Maths", marks: "74" },
+        { subject: "Physics", marks: "45" },
+        { subject: "Chemistry", marks: "83" },
+        { subject: "Computer", marks: "55" },
+      ],
+    },
+    {
+      name: "Person6",
+      gender: "female",
+      result: [
+        { subject: "Tamil", marks: "38" },
+        { subject: "English", marks: "56" },
+        { subject: "Maths", marks: "64" },
+        { subject: "Physics", marks: "35" },
+        { subject: "Chemistry", marks: "33" },
+        { subject: "Biology", marks: "37" },
+      ],
+    },
+    {
+      name: "Person7",
+      gender: "female",
+      result: [
+        { subject: "Tamil", marks: "58" },
+        { subject: "English", marks: "86" },
+        { subject: "Maths", marks: "34" },
+        { subject: "Physics", marks: "75" },
+        { subject: "Chemistry", marks: "39" },
+        { subject: "Computer", marks: "47" },
+      ],
+    },
+    {
+      name: "Person8",
+      gender: "male",
+      result: [
+        { subject: "Tamil", marks: "88" },
+        { subject: "English", marks: "69" },
+        { subject: "Maths", marks: "44" },
+        { subject: "Physics", marks: "85" },
+        { subject: "Chemistry", marks: "93" },
+        { subject: "Computer", marks: "76" },
+      ],
+    },
+    {
+      name: "Person9",
+      gender: "male",
+      result: [
+        { subject: "Tamil", marks: "80" },
+        { subject: "English", marks: "36" },
+        { subject: "Maths", marks: "34" },
+        { subject: "Physics", marks: "55" },
+        { subject: "Chemistry", marks: "38" },
+        { subject: "Biology", marks: "70" },
+      ],
+    },
+    {
+      name: "Person10",
+      gender: "female",
+      result: [
+        { subject: "Tamil", marks: "38" },
+        { subject: "English", marks: "26" },
+        { subject: "Maths", marks: "54" },
+        { subject: "Physics", marks: "35" },
+        { subject: "Chemistry", marks: "53" },
+        { subject: "Biology", marks: "27" },
+      ],
+    },
+    {
+      name: "Person11",
+      gender: "male",
+      result: [
+        { subject: "Tamil", marks: "84" },
+        { subject: "English", marks: "66" },
+        { subject: "Maths", marks: "48" },
+        { subject: "Physics", marks: "53" },
+        { subject: "Chemistry", marks: "39" },
+        { subject: "Computer", marks: "45" },
+      ],
+    },
+    {
+      name: "Person12",
+      gender: "female",
+      result: [
+        { subject: "Tamil", marks: "68" },
+        { subject: "English", marks: "46" },
+        { subject: "Maths", marks: "74" },
+        { subject: "Physics", marks: "25" },
+        { subject: "Chemistry", marks: "63" },
+        { subject: "Computer", marks: "65" },
+      ],
+    },
+  ];
+let data_length=data.length
+// let array=[]
+let c=[]
+
+for (let i=0;i<data_length;i++)
+{
+ let result_length=data[i].result.length
+ let total=0
+ for (let j=0;j<result_length;j++)
+ {
+  //  let marks=data[i].result[j].marks
+  //  total=total+marks
+  //  let marks_multiplication=marks*2
+
+// array.push(marks_multiplication)
+
+// array.push(data[i].result[j].marks=marks_multiplication)
+// let maths=data[i].result[2].marks
+// let physics=data[i].result[3].marks
+// let chemistry=data[i].result[4].marks
+// total=total+maths
+//  console.log(maths)
+ c.push(data[i].result[2].marks,data[i].result[3].marks,data[i].result[4].marks)
+ 
+}
+}console.log(c)

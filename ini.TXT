@@ -1,0 +1,285 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        String a=" Football is a game that millions of people around the world play and love. fdugfyrsrytIt cand fdgfbe. called a universal game because every small and shfdf, hgnation plays itffffghjgkh.j.jhdghhjk.";
+        int f=a.lastIndexOf(",");
+        String e=a.substring(f);
+        String g=e.toUpperCase();
+        int h=a.indexOf(" ");
+        String d=a.substring(h,f);
+        String c=d+g;
+        System.out.println(c);
+    }
+}
+
+
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        int a=10;
+        int b=11;
+        int c=13;
+        int d=10;
+        if(a>=b)
+         {  
+        System.out.println("T");
+        }
+        // else if(a!=b)
+        // {
+            // System.out.println("t");
+        // }
+        else
+        {
+        System.out.println("F");
+        }
+    }
+}
+
+
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public static void main(String[] args) {
+        Boolean dosa = true;
+        Boolean sambar=false;
+        Boolean idili=true;
+        Boolean chutni=true;
+        Boolean puri=true;
+        Boolean aluu=true;
+        if (dosa&&sambar)
+    {
+        System.out.println("available");
+    }
+    if (idili&&chutni)
+    {
+        System.out.println("available2");
+    }
+    else if(puri&&(aluu||sambar))
+    {
+       System.out.println("available3");  
+    }
+    else
+    {
+        System.out.println("not available");
+    }
+    }
+}
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        int age=100;
+        if (age<=65)
+        {
+         System.out.println("entry");    
+        }
+        else
+        {
+        System.out.println("no entrry");
+        }
+    }
+}
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+          String a ="welcome";
+        String d = "iniyan";
+        String g = a+d;
+        System.out.println(g);
+        int age =18 ;
+        if (age<=18)
+        {
+          System.out.println("ride 1&3");  
+        }
+        else if (age>=18 && age<=60)
+        {
+        System.out.println("all ride");
+        }
+        else if(age>60)
+        {
+            System.out.println("ride 1&2");
+        }
+    }
+}
+
+class HelloWorld {
+    public static void main(String[] args) {
+        
+        int age=61;
+        if (age<18)
+        {
+            System.out.println("ride 1 & 3");
+        }
+        else if(age>=18 && age<=60)
+        {
+            System.out.println("all ride");
+        }
+       else if (age>60)
+        {
+            System.out.println("ride 1 & 2");
+        }
+        
+       
+         
+    }
+}
+
+class HelloWorld {
+    public static void main(String[] args) {
+          String a ="welcome";
+        String d = "iniyan";
+        int mark[] = {60,76,80};
+        d = "Sam";
+        // mark[1] = 90;
+        // mark.push(88);
+        // mark.push(99);
+        // mark.pop();
+        String g = a+d;
+        System.out.println("mark 1 =" +mark[0]);
+        }
+}
+
+class HelloWorld {
+    public static void main(String[] args) {
+          String [] a = {"aa","ab","ac"};
+          a [0] ="ad";
+        System.out.println("alphabets " +a[0]);
+        }
+}
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+         int[] a = {1,2,3,4};
+         for (int i=0;i<a.length;i++)
+         {
+              System.out.println(a[i]);
+         }
+       
+        }
+}
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        int a[] = {1,2,3,4,5};
+        int b = a.length;
+        int sum = 0;
+        for (int i=0;i<b;i++)
+        {
+            sum = sum+a[i];
+             System.out.println(sum);
+        }
+           }
+}
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+         int a[] = {60,45,72,80,40};
+         int x = 50;
+         int b = a.length;
+         for (int i=0;i<b;i++)
+         {
+             if (a[i]>=x)
+             {
+                 
+                  System.out.println(a[i]);
+             }
+         }
+         
+            }
+}
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        int a[] = {60,45,72,80,40};
+         int x = 50;
+         int b = a.length;
+         int sum = 0;
+         int pass_mark = 0;
+         for (int i=0;i<b;i++)
+         {
+             if (a[i]>=x)
+             {
+                  sum = sum + a[i];
+                  pass_mark = pass_mark + 1;
+                 }
+         } 
+         int average = sum / pass_mark;
+         System.out.println("pass mark total is : "+sum);
+          System.out.println("pass mark average is : "+average);
+    }
+}
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        int marks[] = {10,20,30,40,50,60,70,80,90,100};
+        int a = marks.length;
+        int b = 50;
+        int pass_mark;
+        int i;
+                for(i=0;i<a;i++)
+        {
+            if(marks[i]>=b)
+            {
+            // System.out.println(marks[i]);
+            int m = marks[i];
+            // System.out.println(m);
+                      if (m%3==0){
+             System.out.println("marks divided by 3 " +m);
+    }
+            }
+            
+        }
+        
+}
+}
+
+class HelloWorld {
+    public static void main(String[] args) {
+        int marks[] = {15,23,30,40,50,60,70,89,90,100};
+        int a = marks.length;
+        int b = 50;
+        int pass_mark;
+        int i;
+                for(i=0;i<a;i++)
+        {
+            if(marks[i]>=b)
+            {
+            // System.out.println(marks[i]);
+            int m = marks[i];
+            // System.out.println(m);
+                      if (m%3==0  m%5==0){
+             System.out.println("marks divided by  " +m);
+    }
+            }
+            
+        }
+        
+}
+}
+
+
+let a=[10,20,30,40,50,60,70,80,90,100];
+let b=a.length;
+let x=50;
+for(let i=0;i<b;i++)
+{
+  if(a[i]>x)
+  {
+    if(a[i]%3===0 && a[i]%5===0)
+console.log("marks divided by 3 & 5 "+a[i]);
+  }
+}

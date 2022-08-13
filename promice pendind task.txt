@@ -1,0 +1,46 @@
+import React ,{useState}from "react";
+import {View,Image,TouchableOpacity,Modal,Dimensions,ImageZoom} from 'react-native'
+
+export default function App (){
+const [visiable,setvisiable]=useState()
+const [asyncResult,setAsyncResult]=useState(0)
+console.log("begin loop")
+console.log("holding for the syncrounous loop result")
+let i=0;
+while(i<3000000000){
+  i=i+1;
+}
+console.log("end loop")
+console.log("i-->",i);
+console.log("2.Begin async") 
+.then(()=>{console.log("lokesh")})
+
+console.log("2.End async")
+
+
+  return(<View style={{backgroundColor:"white",flex:1,justifyContent:"space-between"}}>
+
+    <View style={{height:400,width:300,marginTop:50,marginLeft:30,backgroundColor:"blue"}}>
+      <TouchableOpacity onPress={()=>{setvisiable(true)}}>
+<Image style={{height:400,width:300}} source={{uri:'https://imgd.aeplcdn.com/1280x720/n/cw/ec/58025/right-front-three-quarter.jpeg?q=80'}}/>
+</TouchableOpacity>
+    </View>
+    {/* <ImageZoom cropWidth={Dimensions.get('window').width}
+                       cropHeight={Dimensions.get('window').height}
+                       imageWidth={200}
+                       imageHeight={200}>
+                <Image style={{width:200, height:200}}
+                       source={{uri:'https://imgd.aeplcdn.com/1280x720/n/cw/ec/58025/right-front-three-quarter.jpeg?q=80'}}/>
+            </ImageZoom> */}
+
+<Modal visible={visiable}  transparent={false}>
+  <TouchableOpacity onPress={()=>{setvisiable(false)}}>
+<View style={{height:20,width:50,backgroundColor:"red"}}></View></TouchableOpacity>
+<View style={{height:600,width:300,marginTop:50,marginLeft:30}}>   
+<Image style={{height:600,width:300}} source={{uri:'https://imgd.aeplcdn.com/1280x720/n/cw/ec/58025/right-front-three-quarter.jpeg?q=80'}}/>
+</View>
+
+</Modal>
+
+  </View>)
+}

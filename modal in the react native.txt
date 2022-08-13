@@ -1,0 +1,23 @@
+import React ,{useState}from "react";
+import {View,Image,TouchableOpacity,Modal} from 'react-native'
+
+export default function App (){
+const [visiable,setvisiable]=useState()
+  return(<View style={{backgroundColor:"white",flex:1,justifyContent:"space-between"}}>
+
+    <View style={{height:400,width:300,marginTop:50,marginLeft:30,backgroundColor:"blue"}}>
+      <TouchableOpacity onPress={()=>{setvisiable(true)}}>
+<Image style={{height:400,width:300}} source={{uri:'https://imgd.aeplcdn.com/1280x720/n/cw/ec/58025/right-front-three-quarter.jpeg?q=80'}}/>
+</TouchableOpacity>
+    </View>
+<Modal visible={visiable}  transparent={true}>
+  <TouchableOpacity onPress={()=>{setvisiable(false)}}>
+<View style={{height:20,width:50,backgroundColor:"red"}}></View></TouchableOpacity>
+<View style={{height:600,width:300,marginTop:50,marginLeft:30}}>   
+<Image style={{height:600,width:300}} source={{uri:'https://imgd.aeplcdn.com/1280x720/n/cw/ec/58025/right-front-three-quarter.jpeg?q=80'}}/>
+</View>
+
+</Modal>
+
+  </View>)
+}

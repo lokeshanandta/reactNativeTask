@@ -1,0 +1,37 @@
+import React from 'react';
+import {Text,View,Button} from 'react-native';
+export default class app extends React.Component{
+  constructor(props){
+    super(props) 
+    this.state={button:[{id:0,name:"1"},{id:1,name:"2"},{id:2,name:"3"},{id:3,name:"4"},{id:4,name:"5"},{id:5,name:"6"},{id:6,name:"7"},{id:7,name:"8"},{id:8,name:"9"},{id:9,name:"0"},{id:10,name:"+"},{id:11,name:"-"},{id:12,name:"="}],
+    object:"",array:[]}
+  }
+  handlebutton=(i)=>{
+this.state.object=i;
+this.setState({object:this.state.object})
+this.state.array.push(this.state.object)
+
+// this.total=parseInt(this.state.array)
+console.log(this.state.array)
+ }
+ addition=()=>{
+   
+ }
+  render(){
+    return(<View style={{flex:1}}>
+    <View style={{flex:0.40,borderColor:"red",borderWidth:2}}>
+    <Text>{this.state.array}</Text>
+    </View>
+    {this.state.button.map((d)=>{return(<View>
+    <Button
+    onPress={()=>this.handlebutton(d.name)}
+    title={d.name}
+    color="blue"
+    />
+    
+    </View>
+    )})}
+
+    </View>)
+  }
+}

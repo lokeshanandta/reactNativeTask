@@ -1,0 +1,34 @@
+int available_plaindosa = 50;
+    int available_muttadosa = 30;
+    int available_egg = 30;
+    
+    int c1_plaindosa = 25;
+    int c1_muttadosa = 25;
+    
+    int c2_plaindosa = 5;
+    int c2_muttadosa = 30;
+    
+    int c3_plaindosa = 35;
+    int c3_muttadosa = 15;
+    
+    if (available_muttadosa>=c2_muttadosa)
+    {
+        String mutta = "available";
+        System.out.println("mutta is"+ mutta);
+    }
+    else
+    {
+        String mutta = "not available";
+        System.out.println("mutta is"+ mutta);
+    }    
+    
+    if ((available_muttadosa - c2_muttadosa)*5/3 >=c2_plaindosa)
+    {
+        String plain = "available";
+        System.out.println("plain is" + plain);
+    }
+    else
+    {
+        String plain = "not available";
+        System.out.println("plain is"+ plain);
+    }

@@ -1,0 +1,18 @@
+        int available_plain =10;
+        int available_mutta=6;
+        int customer_plain = 10;
+        int customer_mutta = 5;
+        
+    if(available_plain<customer_plain)
+    {
+         String plain = "not available" ;
+         
+         System.out.println(plain);
+    }
+    else
+    {
+       String plain = "available";
+       
+               System.out.println(plain); 
+
+    }

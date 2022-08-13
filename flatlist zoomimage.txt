@@ -1,0 +1,361 @@
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Loginscreen from './Login/LoginScreen';
+import Homescreen from './Login/Homescreen';
+
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator >
+        <Stack.Screen name="LOGIN"   component={Loginscreen} />
+        <Stack.Screen name='HOME' component={Homescreen}/>
+        {/* <Stack.Screen name="Tabs" component={MyTabs} /> */}
+        {/* <Stack.Screen name="REGISTER" component={Registerscreen} /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
+
+
+
+
+import axios from 'axios';
+import * as React from 'react';
+import {
+  Button,
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from 'react-native';
+export default class Loginscreen extends React.Component {
+  constructor(props) {
+    super(props);
+    // console.log('constructor executed');
+    this.state = {
+      email: '',
+      password: '',
+      validationError: false,
+      validationError2: false,
+      errorPopup: '',
+      errorPopup2: '',
+    };
+  }
+  validation = (value, placeHolderKey) => {
+    if (placeHolderKey === 'Password') {
+      if (value.length > 4) {
+        this.setState({password: value});
+        this.setState({validationError: false});
+      } else {
+        this.setState({errorPopup: '*password is not valid'});
+        this.setState({validationError: true});
+      }
+    }
+
+    if (placeHolderKey === 'E-Mail') {
+      let a = value.indexOf('@');
+      if (value[a] === '@') {
+        this.setState({email: value});
+        this.setState({validationError2: false});
+      } else {
+        this.setState({validationError2: true});
+        this.setState({errorPopup2: '*Email is not valid'});
+      }
+    }
+  };
+
+  login = () => {
+  
+     axios
+      .post('https://reqres.in/api/register', {
+        email: this.state.email,
+        password: this.state.password,
+      })
+      .then(data => {
+        console.log('Success:', data.data);
+        this.props.navigation.navigate('HOME');
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
+  
+};
+
+  render() {
+    // console.log("props->",this.props);
+    return (
+      <View
+        style={{flex: 1, backgroundColor: '#819FF7', justifyContent: 'center'}}>
+        <View style={{}}>
+          <View
+            style={{
+              height: 80,
+              borderRadius: 50,
+              backgroundColor: 'white',
+              width: 80,
+              alignSelf: 'center',
+              marginBottom: 20,
+            }}>
+            <Image
+              style={{height: 80, borderRadius: 50, width: 80}}
+              source={{
+                uri: 'https://i.pinimg.com/originals/9b/97/87/9b9787fb5209b99c3207554a341e3f32.png',
+              }}
+            />
+          </View>
+          <View>
+            <TextInput
+              style={{
+                padding: 15,
+                backgroundColor: 'white',
+                margin: 10,
+                borderRadius: 6,
+                fontSize: 16,
+                marginVertical: 5,
+                color:"black"
+              }}
+              placeholderTextColor=""
+              placeholder="E-mail"
+              onChangeText={value => {
+                this.validation(value, 'E-Mail');
+              }}></TextInput>
+
+            {this.state.validationError2 ? (
+              <View>
+                <Text style={{color: 'red', fontSize: 16}}>
+                  {this.state.errorPopup2}
+                </Text>
+              </View>
+            ) : null}
+          </View>
+          <View>
+            <TextInput
+              style={{
+                padding: 15,
+                backgroundColor: 'white',
+                margin: 10,
+                marginVertical: 5,
+                borderRadius: 6,
+                fontSize: 16,
+                color:"black"
+              }}
+              placeholderTextColor=""
+              placeholder="Password"
+              onChangeText={value => {
+                this.validation(value, 'Password');
+              }}></TextInput>
+
+            {this.state.validationError ? (
+              <View>
+                <Text style={{color: 'red', fontSize: 16}}>
+                  {this.state.errorPopup}
+                </Text>
+              </View>
+            ) : null}
+          </View>
+
+          <View style={{flexDirection: 'row', margin: 15}}>
+            <Image style={{}} />
+            <Text style={{color: 'white'}}>Remember me </Text>
+            <Text style={{color: 'white', marginLeft: 80}}>
+              Forget Password?
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={{
+              padding: 15,
+              backgroundColor: 'white',
+              margin: 10,
+              marginVertical: 5,
+              borderRadius: 6,
+            }}
+            onPress={() => {
+              this.login();
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                alignSelf: 'center',
+                fontFamily: 'bold',
+                color: '#585858',
+              }}>
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+}
+
+
+import axios from 'axios';
+import * as React from 'react';
+import {
+  Button,
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  Image,
+  ScrollView,
+  Modal,
+  Dimensions,
+  FlatList,
+} from 'react-native';
+import ImageZoom from 'react-native-image-pan-zoom';
+// import { keyExtractor } from 'react-native/Libraries/Lists/VirtualizeUtils'
+export default class Homescreen extends React.Component {
+  constructor(props) {
+    super(props);
+    // console.log('constructor executed');
+    this.state = {
+      list: [],
+      isShow: false,
+      imagesModal: '',
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get('https://reqres.in/api/users?page=2')
+      .then(data => {
+        this.setState({list: data.data.data});
+        console.log('Succes Home:', data);
+      })
+      .catch(error => {
+        console.log('Error Home:', error);
+      });
+  }
+  handleModel = value => {
+    // console.log("value--->", value)
+    this.setState({imagesModal: value});
+    this.setState({isShow: true});
+  };
+
+  render() {
+    // console.log("ygug", this.state.list)
+
+    return (
+      <FlatList
+        data={this.state.list}
+        renderItem={item => {
+            console.log("item-->",item)
+          return (
+            <View
+              style={{
+                backgroundColor: 'black',
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <View>
+                <Text
+                  style={{fontSize: 20, color: 'white', alignSelf: 'center'}}>
+                  Welcome to Home screen
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  backgroundColor: '#FBFBEF',
+                  height: 150,
+                  width: 275,
+                  marginVertical: 10,
+                  flexDirection: 'row',
+                }}>
+                <View style={{width: 80, height: 80}}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.handleModel(item.item.avatar);
+                    }}>
+                    <Image
+                      style={{height: 70, width: 80}}
+                      source={{uri: item.item.avatar}}
+                    />
+                  </TouchableOpacity>
+                </View>
+                <View>
+                  <View style={{width: 183, height: 70}}>
+                    <Text style={{color: 'black', fontSize: 20, marginTop: 20}}>
+                      {item.item.first_name} {item.item.last_name}
+                    </Text>
+                  </View>
+
+                  <View style={{flexDirection: 'row'}}>
+                    <View style={{flexDirection: 'row', width: 92, height: 30}}>
+                      <Image
+                        style={{height: 30, width: 30}}
+                        source={{
+                          uri: 'https://t3.ftcdn.net/jpg/03/35/04/28/240_F_335042833_w4hEiM2KDRzMYHTaDA76SKBpeFNv1ymn.jpg',
+                        }}
+                      />
+                    </View>
+                    <View style={{flexDirection: 'row', width: 91}}>
+                      <Image
+                        style={{height: 30, width: 30}}
+                        source={{
+                          uri: 'https://cdn-icons-png.flaticon.com/512/6806/6806987.png',
+                        }}
+                      />
+                      <Text
+                        style={{
+                          color: 'black',
+                          fontSize: 10,
+                          alignSelf: 'center',
+                          width: 60,
+                        }}>
+                        {item.item.email},
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+
+                <Modal visible={this.state.isShow} transparent={false}>
+                  <ImageZoom
+                    cropWidth={Dimensions.get('window').width}
+                    cropHeight={Dimensions.get('window').height}
+                    imageWidth={200}
+                    imageHeight={200}>
+                    <View
+                      style={{
+                        flex: 1,
+                        backgroundColor: '#000000aa',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}>
+                      <Image
+                        style={{height: 200, width: 200}}
+                        source={{uri: this.state.imagesModal}}
+                      />
+                    </View>
+                  </ImageZoom>
+                  {/* <TouchableOpacity style={{height:25,width:25,backgroundColor:"red"}}
+
+onPress={()=>{this.setState({isShow:false})}}
+>
+    <Image style={{height:25,width:25}}
+    source={{uri:'https://as1.ftcdn.net/v2/jpg/03/11/74/34/1000_F_311743449_H2xbYofvYIrhjLC8xIm2fq7oAPXasPFz.jpg'}}
+    />
+</TouchableOpacity> */}
+                </Modal>
+              </View>
+            </View>
+          );
+        }}
+      />
+    );
+  }
+}

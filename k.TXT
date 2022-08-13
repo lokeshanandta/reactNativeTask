@@ -1,0 +1,39 @@
+let school=[{name:"lokesh",
+gender:"male",
+age:"28",
+subject:[70,80,90,100,60]},
+{name:"ajith",
+gender:"male",
+age:"20",
+subject:[45,50,60,70,35,]},
+{name:"srini",
+gender:"male",
+age:"30",
+subject:[60,50,70,80,30,]},
+{name:"vishnu",
+gender:"male",
+age:"32",
+subject:[70,80,25,40,50,]}]
+let b = school.length
+for (let i=0;i<b;i++)
+{let total=0
+let c=(school[i].subject).length
+let d= school[i].subject
+let g=0
+
+ for (let k=0;k<c;k++)
+ {
+total=total+d[k]
+// console.log(d[k])
+let g=d[k]
+// console.log(g)
+if (g<=35)
+{
+  console.log(g,"fail")
+}
+else if (g>=35)
+ {
+  console.log(g,"pass")
+}
+}}
+

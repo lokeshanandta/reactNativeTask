@@ -1,0 +1,45 @@
+boolean dosa = true;
+        boolean sambar= false;
+        boolean poori = true;
+        boolean kezhangu = false;
+        boolean idly = true;
+        boolean chutney =true;
+        if(dosa && sambar)
+        {
+            System.out.println("dosa order is available");
+        }
+        else if(poori && (sambar || kezhangu))
+        {
+            System.out.println("poori order is available");
+        }
+        else if(idly && chutney)
+        {
+            System.out.println("idly order is available");
+        }
+        else
+        {
+            String order = "not available";
+            System.out.println("all order is"+" "+order);
+        } 
+
+
+
+
+
+
+
+another sum
+
+
+
+int a = 10;
+        int b = 20;
+        if(a!=b)
+        {
+            System.out.println("correct");
+            
+        }
+        else
+        {
+            System.out.println("not correct");
+        }

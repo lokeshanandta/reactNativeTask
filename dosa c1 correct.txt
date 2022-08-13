@@ -1,0 +1,38 @@
+int mp = 5;
+    int plaindosafor_1mp = 10;
+    int muttadosafor_1mp = 6;
+    int available_plaindosa = mp * plaindosafor_1mp;
+    System.out.println("available plaindosa is" + available_plaindosa);
+    int available_muttadosa = mp* muttadosafor_1mp;
+    System.out.println("available muttadosa is" + available_muttadosa);
+    
+    int available_egg = 30;
+    
+    
+    int c1_plaindosa = 25;
+    int c1_muttadosa = 25; 
+    
+    if (available_plaindosa < c1_plaindosa)
+    {
+        String plain = "not available";
+        System.out.println("plaindosa is"+ plain);
+    }
+    else
+    {
+        String plain = "available";
+        System.out.println("plaindosa is"+ plain);
+    }
+    
+    int remaining_muttadosa=(available_plaindosa - c1_plaindosa)*3/5;
+    System.out.println("remaining muttadosa for sale is" +" "+remaining_muttadosa);
+    
+    if (remaining_muttadosa < c1_muttadosa)
+    {
+        String mutta = "not available";
+        System.out.println("muttadosa is"+ mutta);
+    }
+    else
+    {
+        String mutta = "available";
+        System.out.println("muttadosa is"+ mutta);
+    }

@@ -1,0 +1,83 @@
+import React, {useState, useEffect} from 'react';
+import {Text, View, TouchableOpacity} from 'react-native';
+
+export default function App() {
+  const [count, setcount] = useState({a: 10, b: 20, c: 0});
+  const [boolean, setboolean] = useState();
+  console.log('count-->', count);
+  let a = 10;
+  let b = 20;
+  let c = 0;
+  useEffect(() => {
+    SamplePromise.then((res)=>{
+      console.log("res--->",res)
+    }).catch((er)=>{
+      console.log("error-->",er)
+    })
+  }, []);
+
+  // async function AsyncFunction(){
+  //  await setTimeout(()=>{App()},3000)
+  // }
+  function App() {
+    const a = 10;
+    const b = 20;
+    let c = 0;
+    setTimeout(() => {
+      c = c + a + b;
+    }, 3000);
+    console.log('the value of c is-->', c);
+  }
+  const SamplePromise = new Promise((resolve, reject) => {
+    let countData = count;
+
+    if (!isNaN(countData.a)&&!isNaN(countData.b)) {
+      
+      setTimeout(() => {
+        countData.c = countData.a + countData.b;
+        console.log('c-->', countData.c);
+        resolve(countData.c);
+      }, 4000);
+    } else {
+      reject('please provide valid numbers');
+    }
+  });
+
+  function IncrementAndDecrement(value) {
+    setcount('true');
+    setboolean('false');
+  }
+  function Increment() {
+    setboolean('true');
+    setcount('false');
+  }
+
+  return (
+    <View style={{flex: 1, backgroundColor: 'red'}}>
+      <TouchableOpacity onPress={() => IncrementAndDecrement()}>
+        <View
+          style={{
+            height: 70,
+            width: 100,
+            backgroundColor: 'blue',
+            marginTop: 30,
+            marginLeft: 40,
+          }}>
+          <Text>Increment</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => Increment()}>
+        <View
+          style={{
+            height: 70,
+            width: 100,
+            backgroundColor: 'blue',
+            marginTop: 30,
+            marginLeft: 40,
+          }}>
+          <Text>Decrement</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+}

@@ -1,0 +1,92 @@
+import React from 'react';
+import {Text, View, Image,Modal,TouchableOpacity} from 'react-native';
+
+export default function App() {
+  return (
+    
+    <View style={{flex: 1, backgroundColor: 'white',marginTop:40}}>
+      <View style={{height:40}}></View>
+      <View style={{height: 500, marginTop: 3, borderColor: 'black'}}>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{height: 30, width: 130}}>
+            <Image
+              style={{height:30, marginLeft: 10}}
+              source={{
+                uri: 'https://www.amzblast.com/wp-content/uploads/2018/05/amazon-choice.png',
+              }}
+            />
+          </View>
+          <View>
+            <Text style={{color: 'black', marginTop: 6, marginLeft: 10}}>
+              "for samsung s20 5g"
+            </Text>
+          </View>
+        </View>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{height: 30, width: 30}}>
+            <Image
+              style={{height: 35, width: 35, marginLeft: 10, marginTop: 10}}
+              source={{
+                uri: 'https://cdn-icons.flaticon.com/png/512/6188/premium/6188543.png?token=exp=1654493708~hmac=7dccf3eaa29311d63b5b87ea5ceedc6d',
+              }}
+            />
+          </View>
+         
+          <View>
+            
+            <Image
+              style={{height: 280, width: 200, marginLeft: 50, marginTop: 40}}
+              source={{
+                uri: 'https://m.media-amazon.com/images/I/812yohjGZ2L._SL1500_.jpg',
+              }}
+            />
+          </View>
+          
+          <View style={{height: 30}}>
+            <Image
+              style={{height: 30, width: 30, marginLeft: 40, marginTop: 10}}
+              source={{
+                uri: 'https://cdn-icons.flaticon.com/png/512/1538/premium/1538617.png?token=exp=1654493410~hmac=3171d4f0626979582ce8e4de42443b76',
+              }}
+            />
+          </View>
+        </View>
+        <View style={{height: 25, width: 100, marginLeft: 150, marginTop: 10}}>
+          <Text style={{color: 'black', fontSize: 20}}>o o o o o ></Text>
+        </View>
+      </View>
+      <View
+
+style={{
+          height: 100,
+          marginTop: 3,
+          marginTop:10
+        }}>
+        <View style={{height: 30, width: 100}}>
+          <Text style={{fontSize: 24, color: 'black', marginLeft: 10}}>
+            color:
+          </Text>
+        </View>
+        <View style={{flexDirection:"row"}}> 
+        <View style={{height: 30, width: 200}}>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 26,
+              marginLeft: 10,
+            }}>
+            cloud blue
+          </Text>
+        </View>
+        <View
+          style={{height: 60, backgroundColor: 'blue',width:40,marginLeft:100,marginBottom:30}}>
+
+            <Image style={{height:"100%"}} source={{uri:'https://m.media-amazon.com/images/I/812yohjGZ2L._SL1500_.jpg'}}/>
+          </View>
+          </View>
+      </View>
+      <Modal></Modal>
+    
+    </View>
+  );
+}

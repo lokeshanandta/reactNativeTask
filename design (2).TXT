@@ -1,0 +1,44 @@
+<View style={{flex:1}}>
+            <View style={{backgroundColor:"black",flex:5}}>
+
+            </View>
+            <View style={{ backgroundColor: "#ffff", flex: 90, }}>
+                <ImageBackground style={{ flex: 12, flexDirection: "colomn", justifyContent:"space_between",backgroundColor:"white"}} source={{ uri:"https://lh3.googleusercontent.com/Qbv_mmCfHYRYImEw393vDvrSdjeU0NZ2Pd_-wm00U6HtE5NRknXpCIcMGpSm29NIH-mpG8MtMh-BoOVIL7HTlINTjligoxxWPY5MIDLyGFSvXYp2c7Y4b_YMAbAjXadj7YZwYhdAVE0U5Y6kHktX4qKe2uVnxUF8V-R7o3_P29awigyDBzHbzp5GBN0TI4ma9EbNjZ1O-0LLjDkqLWIuaN1EqiMylC3TPGr3zgHl6D6-3_u7QI5bMdo7--v1RBQMDCHRfCnJN8AetWcSRwfAniIkGYMludfKtWx_nkjcUPtmzlXtw9Ye4fJbVCky-Q6w56h20IwyW6ZzKC2lDegUOPD3l9uVOsfkVy3xi3cNAMv3qVKMEzMqSrnws6emABV4R7XY68ggqU19m3urQHD_s9SW4JcWi98mcTKRbzjzLhFhm1S7M_DGTmvInTMsC0p_mkIhvS93UNDo1F8pXrM4DyHXi_qfc7B6POTf0pBFRO_FrcMiFbr-Kf6SdL7al9n1nw4RRYnQ1zLQlsAD2aluJlA97CwbzfCKqH17oNN8KX9Bxo0SlDhyzO8nlz9ItgYiC2ZOSSMIKxahs1g2_Qr3WHXMxd-wz28xm-WVoNxIYBENJwPPc3QDlLS1_LUdrYHLD8KqLwck10tb0N1NXn2SJr-boN6icn0g4uQ5Ed2BEmV9R-Vt0RD9zJwUyictO8Em1XX04OVXSINfa1eHwpdRnSU9=w1366-h228-no?authuser=0"}}>
+                    <View style={{ height: "50%", width: "100%",flexDirection:"row" }}>
+                        <View><Image style={{ height: 20, width: 35, tintColor:"white" }} source={{ uri: "https://cdn-icons-png.flaticon.com/512/56/56969.png" }} /></View>
+                        <View style={{ height: 10, width: 60, }}><Text style={{color:"white"}}>sketch</Text></View>
+                        <View style={{ height: 10, width: 60 }}><Text style={{ color: "white" }}>1.30PM</Text></View>
+                        <View style={{ height: 10, width: 60 }}><Text style={{ color: "white" }}>100%</Text></View>
+                        <View style={{ height: 10, width: 30, backgroundColor: "white", marginTop: 4 }}>
+                            <View style={{ height: 10, width: 20, backgroundColor: "grey"}}></View>
+                        
+                        </View>
+                    </View>
+                    <View style={{ flex: 1, flexDirection: "row" }}>
+                        <View style={{ heigth:20, width: 50, paddingLeft:10,bottom:8}}>
+                            <Text style={{fontweight:"bold",fontSize:17,color:"white"}}>x</Text></View>
+                        <View style={{ height: 15, width: 40, marginLeft: 150, paddingLeft: 8, backgroundColor: "#EFABC1"}}>
+                            <Text style={{ fontSize: 12, color: "white" }}>{'Save<'}</Text></View></View> 
+                </ImageBackground>
+                <View style={{ flex: 90, alignItems:"center",justifyContent:"center",paddingBottom:200}}>
+                    <View><Image style={{ height: 100, width: 100 ,borderRadius:50}} source={{ uri:"https://lh3.googleusercontent.com/QwYhG4mnjC_n_0lciElcGO1CrUv-Y9amLUV47diUF0Le_4WnZe0ibsAhi40AwufwrBjBR_JDh-J5Rf3602bJWqHj_61YV6mfy6fT4PvjXBG4vGDfcfxH3OxWROfE2myplcnFsWDQ8rZCAU1HVySLh6M0AEmp77hpLD0DUl6bhuU35TdgnPR5_SYfd9m3VhCsT41bhNS_h3wy-oE-XmokvqaOquxQL37X2IlPpQbHZPtYi63Y7t8tn2Jb9_65ak56WTmtafi22UC02Ug1OdAFuQaH5Llj4iYXkYXDqIacgCXoBOjd4pPMYOlsdOq_6BahF9jLk_efUxqkVA95QFI7fiMQoufhQjrdCYkV45N4X0cL1zf2ywmaHDK56ii0stYrYDelDgEQ8skW-DTt4oFA4wJUgoJgXs0p5lL_N3lkm_2GIqpwvbsuCAYwzOerfy7FWaod0X7F3haL60Bu3-An-LgVlQjs6SFO5CAr3YVfYk6fa5mQMnHerthAiJeXDnZxt7wuyBFgM2tFeX5Pqw9uVwagBKxCqaHE-jMwX_vYyEkQpiaGYsN2aU7i24iVvz1DNfCXTf-Y07DJjkDe85Cm6HszdBznj-8XLGQ9EXJohFKAhw58L9JirS7fRqTh66ra-HYZhm2U-f3N_qUf_sPgkpXdQ5xS89u-PNibHUiQ9ejf2_p4GICSVxo9gXGxy0LFrhhjSrX9r_Yy-i0vM3Cea2uA=s606-no?authuser=0"}}/></View>
+                    <View style={{ height: 50, width: 210, backgroundColor: "white" }}>
+                        <View style={{ height: 50, width: 190, backgroundColor: "white", margin: 10,flexDirection:"row"}}>
+                            <View style={{ height: 50, width: 35, backgroundColor: "white" }}>
+                                <Image style={{ height: 15, width: 15, tintColor: "black" }} source={{ uri: "https://www.pinclipart.com/picdir/big/488-4884056_name-icon-png-white-clipart.png" }} /></View>
+                            <Text>Gurunatha</Text>
+                            <View style={{ height: 2, width: "80%", backgroundColor: "#ededed",marginTop:20 }}>
+                                </View></View>
+                        
+                        <View style={{ height: 50, width: 190, backgroundColor: "white", margin: 10 ,flexDirection:"row"}}>
+                            <View style={{ height: 50, width: 35, backgroundColor: "white" }}>
+                                <Image style={{ height: 15, width: 15 }} source={{ uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeowYqKBFSYGvJOBpzcySanM--dwkQesOGWlFDddCq764S0vQnlppA1tLgFz5bPX5mehM&usqp=CAU"}}/></View>
+                            <View style={{ height: 2, width: "80%", backgroundColor: "#ededed",marginTop:20  }}></View></View>
+                        <View style={{ height: 50, width: 190, backgroundColor: "white", margin: 10,flexDirection:"row" }}>
+                            <View style={{ height: 50, width: 35, backgroundColor: "white" }}>
+                                <Image style={{ height: 20, width: 15 }}source={{ uri:"https://www.clipartmax.com/png/middle/332-3324243_symbol-for-gender-equality-gender-equality-symbol-png.png"}}/></View>
+                            <View style={{ height: 2, width: "80%", backgroundColor: "#ededed", marginTop: 20  }}></View></View>
+                    </View>
+                    </View>
+            </View>
+        </View>
