@@ -1,0 +1,344 @@
+import React from 'react';
+import {
+  Text,
+  View,
+  Button,
+  StyleSheet,
+  Image,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.buttons = [
+      { id: '1', character: '1' },
+      { id: '2', character: '2' },
+      { id: '3', character: '3' },
+      { id: '4', character: '4' },
+      { id: '5', character: '5' },
+      { id: '6', character: 'c' },
+      { id: '7', character: '6' },
+      { id: '8', character: '7' },
+      { id: '9', character: '8' },
+      { id: '10', character: '9' },
+      { id: '11', character: '0' },
+      { id: '12', character: 'ac' },
+      { id: '13', character: '+' },
+      { id: '14', character: '-' },
+      { id: '15', character: '*' },
+      { id: '16', character: '/' },
+      { id: '17', character: '=' },
+    ];
+
+    this.state = {
+      input: '',
+      isequal: false,
+      output: '',
+      message: 'welcome to props',
+      borderColor: '',
+      buttonColour:"orange",
+      backgroundColour:"white",
+      arr1: [{ id: 1 }, { id: 2 }],
+      arr: [
+        { id: 1, name: 'button Colour', active: false },
+        { id: 2, name: 'background Colour', active: false },
+      ],
+      colourArr: [
+        { id: 1,name:"blue", colour: 'blue', active: false },
+        { id: 2,name:"green", colour: 'green', active: false },
+        { id: 3,name:"purple", colour: 'purple', active: false },
+        { id: 4,name:"yellow", colour: 'yellow', active: false },
+        { id: 5,name:"orange", colour: 'orange', active: false },
+        { id: 6,name:"red", colour: 'red', active: false },
+        { id: 7,name:"brown", colour: 'brown', active: false },
+        { id: 8,name:"pink", colour: 'pink', active: false },
+        { id: 9,name:"rose", colour: 'violet', active: false },
+        { id: 10,name:"skyblue", colour: 'skyblue', active: false }
+      ]
+    };
+  }
+
+  handleButtonPress = (value) => {
+    if (value !== 'ac') {
+      if (value !== 'c') {
+        if (value === '=') {
+          console.log('one');
+          this.state.isequal = true;
+          this.state.output = this.state.input;
+          this.state.input = eval(this.state.input);
+          // this.setState({isequal:this.state.isequal})
+          console.log('isequal--->', this.state.isequal, this.state.output);
+          //  this.state.input = eval(this.state.input)
+          //  this.setState({input:this.state.input})
+
+          this.state.isequal = true;
+          this.setState({ isequal: this.state.isequal });
+          //  console.log("boolean---->",this.state.input)
+
+          // console.log("value-->",value,this.state.input,this.state.isequal)
+        } else if (value !== '=') {
+          console.log('two');
+          this.state.input = this.state.input + value;
+          this.setState({ input: this.state.input, isequal: false });
+
+          // console.log("this.state.input--->",this.state.input)
+          this.state.input = eval(this.state.input);
+          // console.log("five")
+
+          // this.state.isequal=false
+          // console.log("this.state.isequal-->",this.state.isequal)
+          // this.setState({isequal:this.state.isequal})
+        }
+      } else {
+        console.log('three');
+        this.state.input = this.state.input.slice(0, -1);
+        this.setState({ input: this.state.input });
+        console.log('clear---->', value, this.state.input);
+      }
+    } else if (value == 'ac') {
+      this.setState({ input: '' });
+      this.setState({ isequal: '' });
+       this.setState({ output: '' });
+    }
+  };
+  handleMessageButtonPress = () => {
+    console.log('button pressed');
+    this.state.message = 'welcome To Clicker';
+    this.setState({ message: this.state.message });
+  };
+  handleButtonColourPress = (item, index) => {
+    console.log('button pressed', index);
+
+    for (let i = 0; i < this.state.arr.length; i++) {
+      console.log('pressed');
+      //  this.state.borderColor="blue"
+      if (this.state.arr[i].id === item.id) {
+        this.state.arr[i].active = true;
+        this.state.isequal=true
+        
+      } else {
+        this.state.arr[i].active = false;
+         this.state.isequal=false
+      }
+      
+      this.setState({ arr: this.state.arr });
+      //  console.log("borderColour",this.state.borderColor,item,i)
+    }
+  };
+  handleColourArrPress = (item) => {
+//   this.state.colourArr.forEach((el,i)=>{
+// console.log("foreach--->",el,item)
+//      if(item.id===el.id)
+//      { 
+//        item.active=true
+//      console.log("active--->",item.active)
+//      }
+//   })
+for(let i=0;i<this.state.colourArr.length;i++)
+{
+  console.log("active---1>",item)
+ if(this.state.arr[i].active===true)
+ {
+     this.state.buttonColour=item.colour
+ }
+     if(this.state.isequal===true)
+     {
+      this.state.backgroundColour=item.colour
+       
+     }
+     else{
+        this.state.backgroundColour=""
+     }
+   
+  this.setState({colourArr:this.state.colourArr})
+}
+ 
+  }
+
+  render() {
+    console.log('this.state-->',this.state.colour1);
+    return (
+      <View style={{ flex: 1, paddingTop: 30, padding: 20,
+      backgroundColor:this.state.isequal?this.state.backgroundColour:"white"}}>
+        <View style={styles.inputBox}>
+          <View style={{ height: 20, width: 80 }}>
+            <Text>{this.state.output}</Text>
+          </View>
+
+          <View style={{ height: 20, width: 80, marginLeft: '60%' }}>
+            {console.log(this.state.isequal)}
+            <Text>{this.state.input}</Text>
+          </View>
+        </View>
+
+        <ButtonSet
+          message1={this.state.message}
+          handleMessage={this.handleMessageButtonPress}
+        />
+
+        <ButtonMap
+          message2={this.state.message}
+          buttons={this.buttons}
+          handleButtonPress={this.handleButtonPress}
+          arr={this.state.arr}
+          borderColor={this.state.borderColor}
+          handleButtonColour={this.handleButtonColourPress}
+          colourArr={this.state.colourArr}
+          handleColourArr={this.handleColourArrPress}
+          buttonColour={this.state.buttonColour}
+         
+        />
+       <CustomButton  title="add" onPress={()=>console.log("pressed")}/>  
+       <CustomButton  title="sub"/>  
+       <CustomButton  title="div"/>  
+       <CustomButton  title="mul"/>   
+
+      </View>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  // container: { flex: 1, paddingTop: 30, padding: 20, },
+
+  inputBox: {
+    borderWidth: 1,
+    height: 40,
+    width: 200,
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+
+  button: {
+    backgroundColor: 'skyblue',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+    marginTop: 10,
+  },
+
+  touchableButton: {
+    borderWidth: 1,
+    textAlign: 'center',
+    backgroundColor: 'orange',
+    borderColor: 'blue',
+    height: 20,
+    width: 25,
+    margin: 10,
+  },
+});
+
+export class ButtonSet extends React.Component {
+  render() {
+    return (
+      <View>
+        <Text>{this.props.message1}</Text>
+        <Button title="change messag" onPress={this.props.handleMessage} />
+      </View>
+    );
+  }
+}
+
+ export class CustomButton extends React.Component{
+  render(){
+    return(
+      <View>
+          <TouchableOpacity style={{borderWidth: 1,
+      textAlign: 'center',
+      backgroundColor: 'orange',
+      borderColor: 'blue',
+      height: 20,
+      width: 35,
+      margin: 10,}} onPress={this.props.onPress} >
+      <Text>{this.props.title}</Text></TouchableOpacity>
+       </View>
+    )
+  }
+}
+
+
+export class ButtonMap extends React.Component {
+  render() {
+    {
+      console.log('this.state.--->',);
+    }
+    return (
+      <View>
+        // <Text>{this.props.message2}</Text>
+        <View style={styles.button}>
+          {this.props.buttons.map((item, i) => {
+            {
+              console.log('propsarr');
+            }
+            return (
+
+              <TouchableOpacity
+                style={styles.touchableButton}
+                onPress={() => this.props.handleButtonPress(item.character)}>
+                {item.character}
+              </TouchableOpacity>
+              // disabled={true}
+            );
+          })}
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          // {console.log('propsarr1', this.props.arr)}
+          {this.props.arr.map((item, i) => {
+            {
+              // console.log('propsarr----1>', item.active);
+            }
+            return (
+              <CustomButton
+                style={{
+                  borderWidth: 5,
+                  textAlign: 'center',
+                  backgroundColor: 'orange',
+                  borderColor: item.active ? "blue" : 'white',
+                  height: 50,
+                  width: 90,
+                  margin: 10,
+                }}
+                onPress={() => this.props.handleButtonColour(item, i)}>
+                {item.name}
+              </CustomButton>
+            );
+          })}
+        </View>
+        
+        <View style={{flexDirection:"row",flexWrap:"wrap",justifyContent:"space-evenly"}}>
+        {this.props.colourArr.map((item,i)=>{
+          console.log("colouearr--->",item,this.props.colour)
+        return(
+ <TouchableOpacity
+                style={{
+                  borderWidth: 1,
+                  textAlign: 'center',
+                  backgroundColor:this.props.buttonColour,
+                  borderColor: "blue",
+                  height: 20,
+                  width: 50,
+                  margin: 10,
+                }}
+                onPress={() => this.props.handleColourArr(item,i)}>
+                {item.name}
+              </TouchableOpacity>
+        );
+        })}
+        
+        </View>
+
+      </View>
+    );
+  }
+}
+// export class CostumButton extends React.Component{
+//   render(){
+//     return(
+//       <View>
+//        <Text>{this.props.message1}</Text>
+//        <View>
+//     )
+//   }
+// }

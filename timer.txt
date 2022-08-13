@@ -1,0 +1,119 @@
+import { tsConstructorType } from "@babel/types";
+import React, { Component } from "react";
+import { AppState, StyleSheet, Text, View,Image,TouchableOpacity, TextInput } from "react-native";
+
+class App extends React.Component {
+
+starttimer=()=>{
+  
+this.resumetimer()
+
+this.setState({
+  show: false
+})
+
+}
+
+pausetimer=()=>{
+  clearTimeout(this.interval)
+  
+}
+
+
+resumetimer=()=>{
+ 
+  this.interval = setTimeout(() => {
+    let timer= this.state.timer
+    
+    if(timer===0)
+    {
+      
+      this.setState({
+        timer:60
+      })
+    }
+    else if(this.ongoing===false )
+    {
+    
+    this.setState({
+      timer: timer-1
+    })
+    
+    this.resumetimer()
+    }
+  }, 1000);
+
+
+}
+ 
+restarttimer=()=>{
+  this.setState({
+    timer:60
+  })
+  clearTimeout(this.interval)
+}
+constructor(props){
+  super(props);
+  this.interval=""
+  this.ongoing=false
+  this.recursive=true
+
+
+  this.state=({
+    timer :60,
+    start: true,
+    show: true
+    
+    
+})  
+}
+
+
+render() {
+
+  return(
+  <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
+
+<Text style={{fontSize:30,fontWeight:"bold",color:"black"}}>{"TIMER : "}{this.state.timer}</Text>
+   {this.state.show?
+    <View style={{flexDirection:"row",marginTop:20}}>
+    <TouchableOpacity 
+    onPress={()=>{this.setState({hello:false})},this.starttimer}
+    style={{backgroundColor:"green",height:40,width:80,borderRadius:50}}>
+      <Text style={{fontSize:15,textAlign:"center",color:"white",marginTop:8}}>{"Start"}</Text>
+    </TouchableOpacity>
+    </View>
+    :
+
+  <View style={{flexDirection:"row"}}>
+    <TouchableOpacity 
+    onPress={this.resumetimer}
+    style={{backgroundColor:"lightgrey",height:40,width:80,borderRadius:50,marginLeft:10}}>
+      <Text style={{fontSize:17,textAlign:"center",color:"black",marginTop:8}}>{"Resume"}</Text>
+    </TouchableOpacity>
+   
+  
+
+  
+      
+      
+    <TouchableOpacity 
+    onPress={this.pausetimer}
+    style={{backgroundColor:"lightgrey",height:40,width:80,borderRadius:50,marginLeft:10}}>
+      <Text style={{fontSize:15,textAlign:"center",color:"black",marginTop:8}}>{"Pause"}</Text>
+    </TouchableOpacity>
+  
+    <TouchableOpacity 
+    onPress={this.restarttimer}
+    style={{backgroundColor:"lightgrey",height:40,width:80,borderRadius:50,marginLeft:10}}>
+      <Text style={{fontSize:17,textAlign:"center",color:"black",marginTop:8}}>{"Restart"}</Text>
+    </TouchableOpacity>
+    </View>
+  
+
+   }
+  </View>
+  );
+  } 
+  }
+  export default App;

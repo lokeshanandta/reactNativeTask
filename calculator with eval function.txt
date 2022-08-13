@@ -1,0 +1,73 @@
+import React from 'react';
+import { Text, View,Button, TouchableOpacity } from 'react-native';
+
+export default class app extends React.Component{
+constructor(props){
+  super(props)
+this.state={number:[{id:0,name:"1"},{id:1,name:"2"},{id:2,name:"3"},{id:3,name:"4"},{id:4,name:"5"},{id:5,name:"6"},{id:6,name:"7"},{id:7,name:"8"},{id:8,name:"9"},{id:9,name:"0"},{id:10,name:"+"},{id:11,name:"-"},{id:12,name:"%"},{id:13,name:"*"}],object:"",add:"",string:""}
+}
+handlebutton=(i)=>{
+   this.state.object=this.state.object+i
+ this.setState({object:this.state.object})
+  }
+  handleequalto=(variable)=>{
+    this.state.add=eval(variable)
+    this.setState({add:this.state.add})
+    this.state.array=this.state.add
+   this.setState({add:this.state.object})
+    this.state.object=this.state.array
+  handlebutton=()=>{console.log("lokesh")
+if (this.state.object===e.id)
+this.state.object=""
+this.setState({object:this.state.object})
+console.log(this.state.object)
+
+  }
+  }
+  handledeleted=()=>{
+    this.state.object=this.state.object.slice(0,-1)
+    this.setState({object:this.state.object})
+    
+  }
+render(){
+return(<View style={{flex:3}}>
+
+<View style={{flex:0.10,borderColor:"black",borderWidth:2,backgroundColor:"white"}}>
+
+<Text>{this.state.add}</Text>
+
+<View style={{alignItems:"flex-end"}}>
+
+<View style={{height:40,width:80,borderWidth:2,borderColor:"red"}}>
+
+<Text>{this.state.object}</Text></View>
+
+</View>
+<View  style={{flexDirection:"row",flexWrap:"wrap"}}>
+{this.state.number.map((e)=>{return(
+<TouchableOpacity onPress={()=>this.handlebutton(e.name)}>
+  <View style={{height:40,width:60,padding:20,margin:7,backgroundColor:'blue',alignItems:"center",justifyContent:"center"}}>
+  <Text  style={{color:"white"}}>{e.name}</Text>
+  
+  </View></TouchableOpacity>)})}
+  <View style={{height:30,width:70,margin:20}}>
+  <Button
+  onPress={()=>this.handleequalto(this.state.object)}
+  title="="
+  color="blue"
+  />
+  </View>
+  <View>
+   <Button
+  onPress={this.handledeleted}
+  title="del"
+  color="blue"
+  />
+  
+  </View>
+  </View>
+</View>
+</View>)
+
+}
+}

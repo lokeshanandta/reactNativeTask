@@ -1,0 +1,90 @@
+import React from 'react'
+import {Text,View,TextInput,ImageBackground,TouchableOpacity,Button} from 'react-native'
+export default class app extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={name:"",phonenumber:"",mail:"",alertphonenumber:"",alertmail:""},
+    this.state.namealert=""
+    
+  } 
+  handlefunction=(value,i)=>{
+    if (value==="mail"){
+    console.log("name function called")
+    
+ for (let j=0;j<(i).length;j++){
+    if (i[j]==="@"){
+      this.setState({alertmail:false})
+    }
+    else{
+      this.setState({alertmail:true})
+    } }}
+
+
+    if (value==="phone number"){
+      console.log("phone number called")
+ if(i.length===10){
+     this.setState({alertphonenumber:false})
+}
+else
+{
+  this.setState({alertphonenumber:true})
+} } 
+
+if(value==="name"){
+  console.log("name function called")
+if(isNaN(i)){
+  this.setState({name:(i)})
+  this.state.namealert=false
+  this.setState({namealert:false})
+}
+else{
+  this.state.namealert=true
+  this.setState({namealert:true})
+}}
+}
+
+  render(){
+    return(<View style={{flex:1,alignItems:"center",backgroundColor:"#b089f0"}}>
+   <Text style={{color:"white",fontSize:20,marginTop:50,fontWeight:1}}>FOOBAR</Text> 
+   
+    
+    <View style={{height:140,marginTop:30,paddingRight:40}}>
+<TextInput
+// backgroundColor="#b089f0"
+
+placeholder="Name"
+placeholderTextColor="white"
+style={{height:"100%",color:"white",borderBottomWidth:2,borderColor:"white"}}
+onChangeText={(value)=>this.handlefunction("name",value)}/>
+    
+    {this.state.namealert?<View><Text style={{color:"red",fontStyle:"italic",fontSize:14}}>Number Is Not Allowed</Text></View>:null}
+    
+    <TextInput 
+    onChangeText={(value)=>this.handlefunction("phone number",value)}
+    placeholder="Phone number"
+    placeholderTextColor="white"
+    style={{height:"100%",color:"white",borderBottomWidth:2,borderColor:"white"}}
+    />
+    
+    {this.state.alertphonenumber?<View><Text style={{color:"red",fontStyle:"italic",fontSize:14}}>Number Length up 10</Text></View>:null}
+
+
+    
+    <TextInput
+    placeholderTextColor="white"
+    onChangeText={(value)=>this.handlefunction("mail",value)}
+    placeholder="Email"
+    style={{height:"100%",color:"white",borderBottomWidth:2,borderColor:"white"}}
+    />
+    </View>
+    
+    {this.state.alertmail?<View><Text style={{color:"red",fontStyle:"italic",fontSize:14}}>requires @</Text></View>:null}
+    <TouchableOpacity>
+  <View style={{backgroundColor:"#3d167d",height:40,marginTop:40,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:13,paddingRight:70,paddingLeft:70}}>LOGIN</Text>
+  </View>
+  </TouchableOpacity>
+  <View><Text style={{color:"white",marginTop:70}}>Sign up</Text></View>
+    </View>)
+  }
+}

@@ -1,0 +1,28 @@
+import React from 'react';
+import { Text, View ,ScrollView,} from 'react-native';
+export default class app extends React.Component{
+  constructor(props)
+{
+  super(props)
+  this.state={name:[{id:1,name:"kamalesh",gender:"male",age:"23"},
+{id:1,name:"nandhu",gender:"female",age:"17"},
+{id:2,name:"aparna",gender:"female",age:"34"},
+{id:3,name:"chiti",gender:"female",age:"8"},
+{id:4,name:"getha",gender:"female",age:"48"},
+{id:5,name:"jayachandran",gender:"male",age:"53"},
+{id:6,name:"joshna",gender:"female",age:"21"},
+{id:7,name:"goutham",gender:"male",age:"48"},
+{id:8,name:"vishal",gender:"male",age:"17"},
+{id:9,name:"prakash",gender:"male",age:"7"},
+{id:10,name:"dilli",gender:"male",age:"58"},
+{id:11,name:"shalinie",gender:"female",age:"22"},
+{id:12,name:"sam",gender:"male",age:"28"}]}
+
+}
+render(){return(<View style={{flex:1}}>
+<ScrollView>
+{this.state.name.map((item)=>{return(<View style={{height:100,width:200,borderColor:"red",borderWidth:2}}>
+<Text>{item.name}</Text>
+</View>)})}</ScrollView>
+</View>)}
+}

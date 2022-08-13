@@ -1,0 +1,225 @@
+import React from 'react';
+import{Text,View,Image,TouchableOpacity,StyleSheet} from 'react-native'
+import Calculator from './screen1';
+import Calculator1 from './screen2';
+import {buttonarray,styles} from './ButtonArray';
+export default class app extends React.Component
+{
+  constructor(props){
+    super(props)
+    this.state={button:buttonarray,
+    add:"",
+    indexarray:[],
+    operator:["+","-","%","*","/"],
+    }
+  }
+  handlebuttonclicked=(item,lo)=>{
+    
+    console.log("item-->",lo)
+    if(item.name!=="="){
+      this.state.add=this.state.add+item.name
+      this .rest=this.state.add
+      // console.log(this.state.add,"add")
+      // console.log(this.rest,"rest")
+      }else{
+        // console.log("one")
+        let indexArray=[]
+        for(let i=0;i<this.state.add.length;i++){
+          for(let j=0;j<this.state.operator.length;j++){
+              if(this.state.add[i]===this.state.operator[j]){
+                indexArray.push({id:indexArray.length+1,operator:this.state.add[i],indexFound:i})
+              }
+          }
+        }
+        // console.log("two","indexArray-->",indexArray)
+        let startingIndex=0;
+        let foundNumber=[]
+        for(let k=0;k<indexArray.length+1;k++){
+          // console.log("startingIndex-->",startingIndex,k===indexArray.length?null:indexArray[k].indexFound)
+            let temp=k===indexArray.length?this.state.add.substring(startingIndex):this.state.add.substring(startingIndex,indexArray[k].indexFound)
+            // console.log(k,"temp-->",temp)
+            foundNumber.push(temp)
+            startingIndex=k===indexArray.length?null:indexArray[k].indexFound+1
+        }
+        let result;
+        for(let l=0; l<indexArray.length;l++){
+          
+          if(indexArray[l].operator==='+'){
+            // console.log("one--1")
+            result=l===0?parseInt(foundNumber[l])+parseInt(foundNumber[l+1]):result+foundNumber[l+1]
+          }
+          if(indexArray[l].operator==='-'){
+            // console.log("two--2")
+            result=l===0?parseInt(foundNumber[l])-parseInt(foundNumber[l+1]):result-foundNumber[l+1]
+          }
+         
+          if(indexArray[l].operator==='*'){
+            // console.log("three--3")
+            result=l===0?parseInt(foundNumber[l])*parseInt(foundNumber[l+1]):result*foundNumber[l+1]
+          }
+           if(indexArray[l].operator==='/'){
+            // console.log("three--3")
+            result=l===0?parseInt(foundNumber[l])/parseInt(foundNumber[l+1]):result/foundNumber[l+1]
+          } 
+        }
+this.total=result
+      }
+   
+    this.setState({})
+   
+      }
+handledeleted=()=>{
+this.state.add=""
+this.setState({})
+this.total=""
+}
+handleclear=()=>{
+  this.state.add=this.state.add.substring(0,this.state.add.length-1)
+this.setState({})
+}
+handlerestore=()=>{
+  
+this.state.add=this.rest
+
+this.setState({add:this.state.add})
+}
+  render(){
+    // console.log(this.props,"lokfrfesh")
+    return(<View style={{flex:1,backgroundColor:"red"}}>
+   
+    <View style={{height:"100%"}}>
+    
+
+    
+    <Calculator button={this.state.button} handleclear={this.handleclear} handledeleted={this.handledeleted}  add={this.state.add}
+   cointainer={styles.cointainer} restore={styles.restore} cointainer1={styles.cointainer1}
+   cointainer2={styles.cointainer2} cointainer3={styles.cointainer3} cointainer4={styles.cointainer4} cointainer5={styles.cointainer5} />
+
+<View style={{flexDirection:"row",flexWrap:"wrap",height:120,width:"100%"}}>{this.state.button.map((el)=>{return(<View style={{height:90,margin:2,backgroundColor:"brown"}}>
+    <Calculator1  height={"100%"} width={80} backgroundColor={"grey"} name={el.name}  color={"white"} handledeleted={this.handlebuttonclicked} item={el}/>
+    </View>)})}
+    
+    </View>
+
+<View>
+
+<Calculator1  height={10} width={60} backgroundColor={"red"} name={"DELETE"}  color={"white"} handledeleted={this.handledeleted}/>
+
+<Calculator1 height={10} width={60} backgroundColor={"blue"} name={"clear"}  color={"white"} handledeleted={this.handleclear} />
+    <Calculator1 height={10} width={60} backgroundColor={"pink"} name={"restore"}  color={"white"} handledeleted={this.handlerestore}/>
+    </View>
+    </View>
+   
+    </View>)
+  }}
+
+
+
+
+
+ 
+import {StyleSheet} from 'react-native'
+
+export const buttonarray=[{id:"0",name:"7",isnumber:"true"},
+    {id:"1",name:"8",isnumber:"true"},
+    {id:"2",name:"9",isnumber:"true"},
+    {id:"3",name:"*",isnumber:"false"},
+    {id:"4",name:"4",isnumber:"true"},
+    {id:"5",name:"5",isnumber:"true"},
+    {id:"6",name:"6",isnumber:"true"},
+    {id:"7",name:"-",isnumber:"false"},
+    {id:"8",name:"1",isnumber:"true"},
+    {id:"9",name:"2",isnumber:"true"},
+    {id:"10",name:"3",isnumber:"true"},
+    {id:"11",name:"+",isnumber:"false"},
+    {id:"12",name:"/",isnumber:"true"},
+    {id:"13",name:"0",isnumber:"true"},
+    {id:"14",name:".",isnumber:"true"},
+    {id:"15",name:"=",isnumber:"false"}]
+
+
+    export const styles=StyleSheet.create({
+    cointainer:{height:50,width:100,backgroundColor:"red",alignItems:"center",margin:2,justifyContent:"center"},
+
+    restore:{height:20,width:60,backgroundColor:"blue",alignItems:"center",margin:2,justifyContent:"center"},
+
+    cointainer1:{height:50,width:60,backgroundColor:"#4d4d4d",alignItems:"center",justifyContent:"center"},
+
+    cointainer2:{height:60,width:79,backgroundColor:"#4d4d4d",justifyContent:"center",alignItems:"center"},
+
+    cointainer3:{height:10,width:20,marginLeft:20},
+
+    cointainer4:{height:30,width:"100%",backgroundColor:"#0d0d0d",flexDirection:"row",alignItems:"center"},
+
+    cointainer5:{height:20,width:"100%",backgroundColor:"#0d0d0d"},
+    clearbutt:{height:20 ,width:60, backgroundColor:"#4d4d4d", alignItems:"center",justifyContent:"center",}
+   
+  })
+
+
+
+import React from 'react';
+import{Text,View,Image,TouchableOpacity} from 'react-native'
+export default class calculator extends React.Component{
+constructor(props){
+  super(props)
+}
+
+  render(){
+    // console.log("this.propdjbkfdfds-->",this.props)
+    return(<View>
+  
+<View style={{backgroundColor:"#0d0d0d"}}>
+    <View style={{flexDirection:"row",}}>
+    <View><Text style={{color:"white",width:84,marginLeft:20}}>Calculator</Text></View>
+    <View><Text style={{color:"white",width:110}}>Exchange Rate</Text></View>
+    <View><Text style={{color:"white"}}>Unit conventer</Text></View>
+    </View>
+    
+    <View style={this.props.cointainer5}><Text style={{color:"white",fontSize:20}}>{this.props.add}</Text>
+    </View>
+    <View style={{height:40,width:350}}><Text style={{color:"white"}}>{this.total}</Text></View>
+    </View>
+   
+    </View>)}
+}
+
+import React from 'react';
+import{Text,View,Image,TouchableOpacity} from 'react-native'
+import {buttonarray,styles} from './ButtonArray';
+export default class Calculator1 extends React.Component{
+constructor(props){
+  super(props)
+}
+
+  render()
+  {
+    console.log("lok",this.props.height)
+    return(<View>
+    
+    
+<View>
+    <View style={{height:this.props.heigth,width:this.props.width,backgroundColor:this.props.backgroundColor}}>
+  <TouchableOpacity
+  onPress={()=>this.props.handledeleted(this.props.item)}>
+  <Text style={{color:this.props.color}}>{this.props.name}</Text>
+  </TouchableOpacity>
+</View>
+</View>
+
+  </View>)}}
+//  <View style={{flexDirection:"row",flexWrap:"wrap"}}>
+//     {this.props.button.map((item)=>{return(<View>
+//     <TouchableOpacity onPress={()=>this.props.handlebuttonclicked(item)}>
+// <View style={this.props.cointainer2}>
+// <Text style={{color:"white",fontSize:28}}>{item.name}</Text>
+// </View>
+//     </TouchableOpacity>
+//     </View>)})}</View>
+
+
+
+
+
+
+

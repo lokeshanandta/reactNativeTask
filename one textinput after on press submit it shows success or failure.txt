@@ -1,0 +1,57 @@
+import React from 'react'
+import{Text,View,TextInput,TouchableOpacity} from 'react-native'
+
+export default class app extends React.Component{
+constructor(props){
+  super(props)
+  this.state={number:"",display:true,sucess:false,failure:false}
+}
+handleinput=()=>{
+  if (isNaN!==(this.state.number)){
+    if (this.state.number.length===10){
+this.setState({sucess:true})
+    }
+    else{
+      this.setState({failure:true})
+    }
+  }
+  this.setState({display:false})
+}
+textinputsucessed=()=>{
+  return(
+  <Text>"SUCESSFULLY REGISTERED"</Text>)
+}
+textinputfailed=()=>{
+  return(
+    <Text style={{color:"red"}}>"NUMBER DOESNOT EXIT"</Text>
+  )
+}
+testfunction=()=>{
+  console.log("onblur executed")
+}
+creacttextinput=()=>{
+return(<View style={{flexDirection:"row"}}>
+<View style={{height:40,width:200,borderColor:"black",borderWidth:2,}}>
+<TextInput style={{height:"100%"}}
+onChangeText={(i)=>this.setState({number:(i)})}
+onBlur={()=>this.testfunction()}
+/>
+</View>
+<TouchableOpacity onPress={this.handleinput}>
+<View style={{height:40,width:70,backgroundColor:"grey",justifyContent:"center",alignItems:"center"}}>
+<Text>SUBMIT</Text>
+</View>
+</TouchableOpacity>
+
+</View>)
+}
+render(
+)
+
+{console.log("hgsjdgug",this.state.number)
+  return(<View style={{flex:1,justifyContent:"space-around",alignItems:"center"}}>
+{this.state.display?this.creacttextinput():null}
+{this.state.sucess?this.textinputsucessed():null}
+{this.state.failure?this.textinputfailed():null}
+</View>)}
+}

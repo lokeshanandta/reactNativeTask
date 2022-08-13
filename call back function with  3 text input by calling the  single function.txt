@@ -1,0 +1,70 @@
+import React from 'react'
+import {Text,View,TextInput,TouchableOpacity} from 'react-native'
+export default class HandleTextInputfunction extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={alertnamemessage:"",alertphonemessage:"",alertmailmessage:"",inputtextvalue:""}
+  }
+
+inputMailtext=(inputMail)=>{
+  for (let i=0;i<inputMail.length;i++){
+  if (inputMail[i]==="@"){
+    this.setState({alertmailmessage:null})
+  }
+  else{this.setState({alertmailmessage:"invalid mail"})
+  }}
+}
+
+inputPhoneNumbertext=(inputphonenumber)=>{
+  if (inputphonenumber.length===10){
+    this.setState({alertphonemessage:null})
+  }
+  else{this.setState({alertphonemessage:"number length must in 10"})
+  }
+}
+
+
+inputNametext=(inputname)=>{
+ if (isNaN(inputname)){
+   this.setState({alertnamemessage:null})
+ }
+ else{this.setState({alertnamemessage:"number is not allowed"})
+ }
+}
+
+createTextInput=(styles,functionResivedInparameter,placeholdertext,errorvalue)=>{
+
+return(<View style={{height:30,marginBottom:8,marginTop:20,}}><TextInput
+onChangeText={(inputtext)=>functionResivedInparameter(inputtext)}
+    placeholderTextColor="white"
+    style={styles}
+    placeholder={placeholdertext}
+ />
+ <View><Text style={{color:"red"}}>
+{errorvalue}</Text>
+ </View>
+ </View>)
+}
+styles=()=>{
+  return{borderColor:"black",borderWidth:2,height:30,paddingLeft:20,paddingRight:20,color:"white"}
+}
+render()
+{
+  return(<View style={{flex:1,alignItems:"center",backgroundColor:"#b089f0"}}>
+{this.createTextInput(this.styles(),this.inputNametext,"name",this.state.alertnamemessage)}
+
+{this.createTextInput(this.styles(),this.inputPhoneNumbertext,"phonenumber",this.state.alertphonemessage)}
+{this.createTextInput(this.styles(),this.inputMailtext,"mail",this.state.alertmailmessage)}
+
+
+<TouchableOpacity>
+  <View style={{backgroundColor:"#3d167d",height:40,marginTop:40,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontSize:13,paddingRight:70,paddingLeft:70}}>LOGIN</Text>
+  </View>
+  </TouchableOpacity>
+  <View><Text style={{color:"white",marginTop:70}}>Sign up</Text></View>
+
+</View>)}
+
+}
+

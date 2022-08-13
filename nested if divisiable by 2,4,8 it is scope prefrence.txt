@@ -1,0 +1,28 @@
+import React from 'react';
+import {Text,View} from 'react-native';
+
+export default class app extends React.Component
+{
+  constructor(props){
+    super(props)
+  }
+  componentDidMount(){
+    let a =4
+    let b= []
+    if (a){
+      if (a%2===0){
+      
+      if(a%4===0){
+        if(a%8===0){
+        b.push("divisiable by 2 4 8")  }
+     b.push("divisiable by 2 4") }
+      
+      b.push("divisiable by 2")} 
+     
+    }console.log(b)
+  }
+ render()
+{
+  return(<View></View>)
+}
+}

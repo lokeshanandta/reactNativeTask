@@ -1,0 +1,55 @@
+import React from 'react'
+import {Text,View,TouchableOpacity} from 'react-native'
+
+export default class App extends React.Component{
+constructor(props){
+  super(props)
+  this.state={count:0}
+}
+handlebutton=(vari)=>{
+  if (vari==="mini")
+  {
+    this.state.count=this.state.count-1
+  }
+  else{this.state.count=this.state.count+1}
+  this.setState({})
+console.log("this.state.count",this.state.count)
+}
+componentDidMount(){
+  console.log("component did mount",this.state.count)
+}
+shouldComponentUpdate(){
+  console.log("should component updadte")
+  return true
+}
+componentDidUpdate(){
+console.log("component did update")
+}
+componentWillUnmount(){
+  console.log("component will un mount")
+}
+render()
+{console.log("render called")
+  return(<View  style={{justifyContent:"center",alignItems:"center",flex:1}}>
+  <View style={{height:40,width:200,borderColor:"black",borderWidth:3,justifyContent:"center",alignItems:"center"}}>
+  <Text>{this.state.count}</Text>
+  </View>
+  <View style={{flexDirection:"row",height:40,widht:70}}>
+ <View style={{height:30,width:30,backgroundColor:"blue",marginRight:70}}>
+ <TouchableOpacity onPress={()=>this.handlebutton("mini")}>
+ <Text style={{color:"white",fontSize:20}}>"-"</Text>
+ </TouchableOpacity>
+ </View>
+ <View  style={{height:30,width:30,backgroundColor:"green"}}>
+  <TouchableOpacity onPress={()=>this.handlebutton()}>
+  <Text style={{color:"white",fontSize:20}}>"+"</Text>
+  </TouchableOpacity>
+ </View>
+ </View>
+ <View style={{height:30,width:30,backgroundColor:"grey"}}> <TouchableOpacity onPress={()=>this.handlepushbutton()}>
+  <Text style={{color:"white",fontSize:20}}>"+"</Text>
+  </TouchableOpacity> </View>
+  
+  
+  </View>)
+}}

@@ -1,0 +1,23 @@
+
+let data=[{id:1,name:"kamalesh",gender:"male",age:"23"},
+{id:1,name:"nandhu",gender:"female",age:"17"},
+{id:2,name:"aparna",gender:"female",age:"34"},
+{id:3,name:"chiti",gender:"female",age:"8"},
+{id:4,name:"getha",gender:"female",age:"48"},
+{id:5,name:"jayachandran",gender:"male",age:"53"},
+{id:6,name:"joshna",gender:"female",age:"21"},
+{id:7,name:"goutham",gender:"male",age:"48"},
+{id:8,name:"vishal",gender:"male",age:"17"},
+{id:9,name:"prakash",gender:"male",age:"7"},
+{id:10,name:"dilli",gender:"male",age:"58"},
+{id:11,name:"shalinie",gender:"female",age:"22"},
+{id:12,name:"sam",gender:"male",age:"28"}]
+let b =[]
+let getageminimum=50
+let getagemaximum=60
+for (let i=0;i<data.length;i++){
+ if(data[i].age < getagemaximum){
+   if (data[i].age > getageminimum )
+ b.push({name:data[i].name,gender:data[i].gender})
+ }
+}console.log(b)

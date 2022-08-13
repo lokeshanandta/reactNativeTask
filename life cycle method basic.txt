@@ -1,0 +1,32 @@
+import React from 'react'
+import {Text,View} from 'react-native'
+
+export default class App extends React.Component{
+constructor(props){
+  super(props)
+  this.name="red"
+}
+componentDidMount(){
+this.name="black"
+  console.log("component did mount",this.name)
+}
+shouldComponentUpdate(){
+  return true;
+  console.log("component did update.",this.name)
+}
+componentDidUpdate(){
+  this.name="blue"
+  console.log("component will updated..",this.name)
+}
+componentWillUnmount(){
+  this.name="pink"
+  console.log("componenet will unmount",this.name)
+}
+render()
+{
+  return(<View  style={{justifyContent:"center",alignItems:"center",flex:1}}>
+  <View style={{height:40,width:200,borderColor:"black",borderWidth:3,justifyContent:"center",alignItems:"center"}}>
+  <Text>{this.name}</Text>
+  </View>
+  </View>)
+}}

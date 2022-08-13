@@ -1,0 +1,72 @@
+import React ,{useState}from 'react';
+import { Text, View } from 'react-native';
+import Createtextinput from './createtextinput'
+ 
+ export default 
+ function Loginbutton(){
+   const [namealert,setnamealert]=useState("")
+   const [phonealert,setphonealert]=useState("")
+const[mailalert,setmailalert]=useState("")
+const[alert,setalert]=useState("")
+const[alert1,setalert1]=useState("")
+const[alert2,setalert2]=useState("")
+
+function Validation(input,placeholdervalue){
+
+
+setalert1("number length must 10")
+if (placeholdervalue==="name"){
+  setalert("number is not allowed")
+if(isNaN(input)){
+setalert()
+}
+}
+  
+ if (placeholdervalue==="phonenumber"){
+   setalert1("number length must 10")
+  if(input.length==10){
+    setalert1()
+  }
+ }
+ 
+if(placeholdervalue==="mail"){
+ setalert2("invalid mail")
+ let b=input.indexOf("@")
+ if(b>1){setalert2()}
+}
+}
+
+return(<View style={{flex:1,backgroundColor:"#b089f0"}}>
+<View style={{paddingLeft:30,paddingRight:30,marginTop:30}}>
+{Createtextinput("name",Validation,alert)}
+{Createtextinput("phonenumber",Validation,alert1)}
+{Createtextinput("mail",Validation,alert2)}
+</View>
+
+
+<View style={{justifyContent:"center",alignItems:"center",backgroundColor:"red",height:30,marginTop:100}}>
+<Text style={{color:"white"}}>Login</Text>
+</View>
+</View>)
+ }
+
+
+
+
+import React from 'react'
+import {Text,View,TextInput} from 'react-native'
+ 
+ export default
+function Createtextinput(placeholder,Validatition,alert){
+  return(
+    <View>
+    <TextInput
+  style={{borderBottomColor:"white",borderBottomWidth:2,height:30,margin:10}}
+  onChangeText={(input)=>Validatition(input,placeholder)}
+  placeholder={placeholder}
+  placeholderTextColor={"white"}
+  />
+  <Text>{alert}</Text></View>
+  )
+  
+}

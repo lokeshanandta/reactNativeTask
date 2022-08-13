@@ -1,0 +1,40 @@
+import React from 'react';
+import {Text,View} from 'react-native';
+
+export default class app extends React.Component
+{
+  constructor(props){
+    super(props)
+  }
+  componentDidMount(){
+    let a=10
+    let b=15
+    // console.log(a,"let a")
+    // console.log(a===10,"====-")
+    // console.log(a===15,"===15")
+    // console.log(a!=15)
+    // console.log(a===10 && b===10,"logigal and")
+    // console.log(a===10 || b===10,"logigal or")
+    let c=10
+    let d=1
+    let e=2
+if (c%5===0 && d%5===0 || e%5===0){
+  if (c%5===0 && d%5===0 && e%5===0)
+  {
+    console.log("3 are divisiable by 5")
+  } else {
+    console.log("2 are divisiable by 5")
+  }
+}
+  
+ 
+  else{
+    console.log("1 are divisiable by 5")
+  }
+    }
+  
+render()
+{
+  return(<View></View>)
+}
+}

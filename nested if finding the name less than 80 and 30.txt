@@ -1,0 +1,26 @@
+let data=[{id:1,name:"kamalesh",gender:"male",age:"23"},
+{id:1,name:"nandhu",gender:"female",age:"17"},
+{id:2,name:"aparna",gender:"female",age:"34"},
+{id:3,name:"chiti",gender:"female",age:"8"},
+{id:4,name:"getha",gender:"female",age:"48"},
+{id:5,name:"jayachandran",gender:"male",age:"53"},
+{id:6,name:"joshna",gender:"female",age:"21"},
+{id:7,name:"goutham",gender:"male",age:"48"},
+{id:8,name:"vishal",gender:"male",age:"17"},
+{id:9,name:"prakash",gender:"male",age:"7"},
+{id:10,name:"dilli",gender:"male",age:"58"},
+{id:11,name:"shalinie",gender:"female",age:"42"},
+{id:12,name:"sam",gender:"male",age:"38"}]
+let b ;
+for (let i=0;i<data.length;i++){
+  if (data){
+   if(data[i].age<80){
+     b=data[i].name
+     if(data[i].age<50){
+          b=data[i].name
+       if(data[i].age<30){
+          b=data[i].name
+       }
+     }
+   console.log(b,"lo")}
+  }}

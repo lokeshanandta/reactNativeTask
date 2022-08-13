@@ -1,0 +1,58 @@
+import React,{useState} from 'react';
+import { Text, View,Button,TouchableOpacity,ScrollView,Image} from 'react-native';
+
+export default function Display(){
+  const [array,setarray]=useState([])
+async function Asyncfunction(){
+  const request= await fetch('https://jsonplaceholder.typicode.com/users')
+  const responce= await request.json()
+  setarray(responce,...array)
+  
+}
+
+  return(<View style={{backgroundColor:"lightgrey",flex:1,justifyContent:"center",alignItems:"center",marginTop:10}}>
+  <TouchableOpacity  onPress={Asyncfunction}>
+ <View style={{height:30,width:90,backgroundColor:"#2b89e0",justifyContent:"center",alignItems:"center",marginBottom:10,marginTop:8}}>
+  <Text style={{color:"white"}}>Submit</Text>
+  </View>
+  </TouchableOpacity>
+  <ScrollView>
+{array.map((el)=>{
+    return(<View style={{height:208,width:"100%",backgroundColor:"white",borderWidth:0,borderRadius:10,marginBottom:10}}>
+  <View style={{marginLeft:20,height:120,width:270,justifyContent:"center",alignItems:"center",marginTop:17}}>
+
+<View style={{height:70,width:"100%",flexDirection:"row",marginTop:1,marginRight:39}}>
+<Image style={{height:50,width:50,marginRight:21,margin:10,borderRadius:40}} source={'https://lh3.googleusercontent.com/Ng8DNz4Ln7T8AoUcjoRLCB--0iaJB6oxQ-uwo99xL5hpC-XgSOySYMC21_qH3E7TXQvHLpqNisDXcYE8mz_qY965Bb9pvCmsvI64oVRaZF6pNAALK6nxGzPhcUvxPnNM8gw1KUgnfqrkLx27Su4PtYGbR6kEyNTaGjbB5_mk1IIoQZoDaN444RD0H5avGvhEfrJAGStMUDax1-SEb8koZ1vDeyAQM3w66U3k6OcXuPWltcyR1vkBOXgNErpyyGBaYNk-hI3zSKH92lW0dFjzY2qIWVSLdD91IJMbjGiT4LJT8iRyNMT3h1tnKqsidOp_UmzsEYU8HF5UBFz3N2XO-dtOmQp6LOferl8uVYEpZLN6EDw_bKoXQlyllSnBLQDnV_Bzci92sM3yJ-Xau9wqcgfvv_h5XILUgRKGB_EllOxJf_tnjOh97FvkTcqDmkgwlXqi-xAAHWn0O_dvbGff2yfz7DN3jT_AlML8avC4y_7SzpNif07ytExFJWr_cRfaRjlU5pktGbdcsZqwQnLitvdr13uiF71dmmsyM4c5sW-UhF9vIQ5sJR0JMPfHUTDPhDS90B22FL1O21KFzgu74ZIC-i5A4ocrJTmcsp623EzdxCjwxg1396lG-iT_OLub4E1MqDRTtVyx8Fr_iBBT4OCZr_JsoMeOF4w1nhrzHtIRoihesSB8JvJpCx5JhQLoAqLLx855YNDhm7weKnC-z-ekxTLUqOjVnJkloUI4bkgKxI_SgfNrYDWUrgSl0x8=w834-h625-no?authuser=0'}/><Text style={{fontSize:28,fontWeight:2,marginTop:10}}>{el.name}</Text></View>
+
+<View style={{height:30,width:230,flexDirection:"row",marginLeft:70}}>
+
+<View  style={{height:40,width:120,backgroundColor:"white",flexDirection:"row"}}>
+<Image style={{height:30,width:30,marginRight:7}}source={{uri:"https://cdn-icons.flaticon.com/png/512/2163/premium/2163350.png?token=exp=1653382687~hmac=27639c4b98157a5ed007f872b33d790c"}} />
+<Text style={{fontSize:9,marginTop:19,}}>{el.address.city}</Text>
+</View>
+
+<View  style={{height:40,width:120,backgroundColor:"white",flexDirection:"row",marginRight:10}}>
+<Image style={{height:30,width:30,marginRight:7}} source={{uri:"https://cdn-icons.flaticon.com/png/512/3178/premium/3178284.png?token=exp=1653370432~hmac=aa4891902fb7d6dd3e0347434e590fe0"}}/>
+<Text style={{fontSize:9,marginTop:19,}}>{el.address.zipcode}</Text>
+</View>
+</View>
+
+<View  style={{height:30,width:230,flexDirection:"row",marginLeft:70}}>
+<View  style={{height:40,width:80,backgroundColor:"white",flexDirection:"row",marginRight:7}}>
+<Image style={{height:30,width:30,marginRight:10,marginTop:20}} source={{uri:"https://cdn-icons-png.flaticon.com/512/552/552486.png"}}/>
+<Text style={{marginRight:4,width:70,fontSize:9,marginTop:19,}}> {el.email}</Text>
+</View>
+<View  style={{height:40,width:120,backgroundColor:"white",flexDirection:"row",marginLeft:34}}>
+<Image style={{height:30,width:30,marginRight:10,marginTop:20}} source={{uri:"https://cdn-icons-png.flaticon.com/512/7449/7449942.png"}}/>
+<Text style={{marginRight:4,marginTop:30,fontSize:9,width:50}}>{el.company.name}</Text>
+</View>
+</View>
+
+  </View>
+  </View>)})}
+  </ScrollView>
+
+   
+
+  </View>)
+}

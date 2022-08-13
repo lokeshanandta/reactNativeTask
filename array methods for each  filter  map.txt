@@ -1,0 +1,24 @@
+let a=[12,4,34,23,23,2332,3,223,2332,3233,4344,87]
+a.forEach((el)=>{
+  if (el!==87){
+    console.log(el)
+  }
+})
+
+
+let a=["logu","akash","pumba","kishore","anand","seni"]
+a.filter((el)=>{
+  if(el!=="seni")
+  {
+    console.log(el)
+  }
+})
+
+let a =[1,2,3,4,7,8,9,12,13]
+a.map((el)=>{
+console.log()
+})
+
+
+
+

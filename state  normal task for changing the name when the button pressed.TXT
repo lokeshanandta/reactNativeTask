@@ -1,0 +1,43 @@
+import React from 'react';
+import { Text, View,Button } from 'react-native';
+
+export default class app extends React.Component{
+constructor(props){
+  super(props)
+  this.state={name:"lokesh",age:"28"}
+}
+changeName=()=>{
+this.setState({name:"akash"})
+}
+changeAge=()=>{
+  this.setState({age:"29"})
+}
+render(){
+  return(
+    <View style={{flex:1}}>
+    <View style={{flex:0.07,borderColor:"black",borderWidth:2,marginTop:40,marginLeft:40,marginRight:40}}>
+    <Text>{this.state.name}</Text>
+     <Text>{this.state.age}</Text>
+    </View>
+    <Button 
+    onPress={this.changeName}
+  
+    title="name"
+    color="red"
+    />
+      <Button 
+    onPress={this.changeAge}
+  
+    title="age"
+    color=""
+    />
+    </View>
+  )
+}
+
+
+
+
+
+
+}

@@ -1,0 +1,24 @@
+let data=[{name:"person1",gender:"male",age:50},
+{name:"person2",gender:"female",age:25},
+{name:"person3",gender:"male",age:35}]
+ for(let i=0;i<data.length;i++)
+ {
+   if( data[i].gender==="male"){
+     if (data[i].age>30)
+     {
+       console.log(data[i].name,"salary","12000")
+     }
+     else {
+       console.log(data[i].name,"salary","6000")
+     }   
+   }
+   if(data[i].gender==="female"){
+     if(data[i].age>30){
+       console.log(data[i].name,"salary","10000")
+     }
+     else {
+console.log(data[i].name,"salary","5000")
+     }
+   }
+ }
+
