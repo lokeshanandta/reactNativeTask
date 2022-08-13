@@ -1,0 +1,38 @@
+import React ,{useState} from 'react';
+import { Text, View,Button,TouchableOpacity} from 'react-native';
+
+export default 
+
+function DisplayingLOading (){
+const [flexsize,setflexsize]=useState(0)
+
+
+  function FlexController(){
+setflexsize(flexsize+0.20)
+if (flexsize===1){
+  setflexsize(0)
+}
+// console.log(flexsize)
+  }
+
+  
+
+  return(<View style={{flex:1,backgroundColor:"black"}}>
+  
+  <View style={{height:40,width:200,marginLeft:70,marginTop:170,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{fontSize:27,color:"white"}}> Loading...</Text>
+  </View>
+  <View style={{height:20,width:270,borderColor:"pink",borderWidth:2,marginLeft:30,borderRadius:12,flexDirection:"row",marginTop:10}}> 
+  
+<View style={{flex:flexsize,backgroundColor:"pink"}}> </View>
+</View>
+
+
+<View style={{height:30,width:70,backgroundColor:flexsize===1?"red":"grey",marginLeft:130,marginTop:70,borderRadius:7,alignItems:"center"}}>
+<TouchableOpacity onPress ={FlexController}>
+<Text style={{color:"white",fontSize:20}}>{flexsize===1?"reset":"start"}</Text>
+</TouchableOpacity>
+</View>
+
+  </View>)
+}

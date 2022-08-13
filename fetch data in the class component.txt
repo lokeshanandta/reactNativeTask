@@ -1,0 +1,65 @@
+import React from 'react'
+import {Text,View,TextInput,TouchableOpacity,Image} from 'react-native'
+
+export default class app extends React.Component{
+constructor(props){
+  super(props)
+  this.state={mailData:'',passworddata:''}
+   
+}
+
+ 
+mailAndPassword=()=>
+  {
+   
+     fetch('https://reqres.in/api/register',
+{method:'POST',
+body: JSON.stringify({
+    email:this.state.mailData,
+    password: this.state.passworddata
+}),
+headers:{'Content-Type': 'application/json'}
+})
+.then((responce)=>responce.json())
+.then((data)=>console.log("success",data))
+.catch((error)=>console.log("error"))  
+}
+
+render(){
+  return(
+<View style={{flex:1,backgroundColor:"#365b85",justifyContent:"center",alignItems:"center"}}>
+  <View style={{height:40,width:40,backgroundColor:"white",marginTop:70}}>
+  <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/2111/2111393.png'}}
+  style={{height:40,width:40}}
+  />
+  </View>
+  <View >
+  <View style={{height:40,width:200,borderBottomWidth:2,backgroundColor:"#365b85",borderBottomColor:"white",marginTop:40}}>
+  <TextInput
+onChangeText={(item)=>this.setState({mailData:(item)})}
+  style={{height:'100%',color:"white"}}
+  placeholder={"Email or Phone"}
+  placeholderTextColor="white"
+  />
+  </View>
+
+   <View style={{height:40,width:200,borderBottomWidth:2,backgroundColor:"#365b85",borderBottomColor:"white"}}>
+  <TextInput
+  onChangeText ={(item)=>this.setState({passworddata:(item)})}
+  style={{height:'100%',color:"white"}}
+  placeholder={"Password"}
+  placeholderTextColor="white"
+  secureTextEntry={true}
+  />
+  </View>
+<TouchableOpacity onPress={this.mailAndPassword}>
+  <View style={{height:30,width:200,backgroundColor:"#84acd9",marginTop:40,justifyContent:"center",alignItems:"center"}}>
+  <Text style={{color:"white",fontWeight:20,fontSize:17}}>LOG IN</Text>
+  </View>
+  </TouchableOpacity>
+  </View>
+  </View>)
+
+}
+}
+
