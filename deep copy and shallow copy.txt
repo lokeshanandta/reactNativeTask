@@ -1,0 +1,6 @@
+let deepcpy={a:0,b:"hello",detail:{address:1234,phno:9087}}
+
+deepobj=JSON.parse(JSON.stringify(deepcpy))
+
+deepobj.detail.address=5678
+console.log(deepobj)
